@@ -1,39 +1,39 @@
 "use client";
 
-import Script from "next/script";
 import { useEffect, useRef } from "react";
 
 interface TradingViewWidgetProps {
   symbol?: string;
   theme?: "dark" | "light";
   height?: number;
-  widgetType?: "chart" | "ticker" | "mini-chart";
+  studies?: string[];
 }
 
 /**
- * Embeds a TradingView chart widget.
- * symbol format: "EXCHANGE:PAIR" e.g. "BINANCE:BTCUSDT"
+ * Embeds a TradingView Advanced Chart widget.
+ * symbol format: "EXCHANGE:PAIR" e.g. "COINBASE:BTCUSD"
+ * studies format: published script IDs prefixed with "PUB;" e.g. ["PUB;KDICpAIL"]
  */
 export function TradingViewWidget({
-  symbol = "BINANCE:BTCUSDT",
+  symbol = "COINBASE:BTCUSD",
   theme = "dark",
-  height = 400,
-  widgetType = "chart",
+  height = 500,
+  studies = [],
 }: TradingViewWidgetProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const scriptRef = useRef<HTMLScriptElement | null>(null);
+  const studiesKey = studies.join(",");
 
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // Clear previous widget
     containerRef.current.innerHTML = "";
 
     const script = document.createElement("script");
     script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
     script.type = "text/javascript";
     script.async = true;
-    script.innerHTML = JSON.stringify({
+
+    const config: Record<string, unknown> = {
       autosize: true,
       symbol,
       interval: "D",
@@ -42,22 +42,28 @@ export function TradingViewWidget({
       style: "1",
       locale: "en",
       hide_side_toolbar: false,
-      allow_symbol_change: true,
+      allow_symbol_change: false,
       save_image: false,
       calendar: false,
       hide_volume: false,
       support_host: "https://www.tradingview.com",
-    });
+    };
 
+    if (studies.length > 0) {
+      config.studies = studies;
+    }
+
+    script.innerHTML = JSON.stringify(config);
     containerRef.current.appendChild(script);
-    scriptRef.current = script;
 
     return () => {
       if (containerRef.current) {
         containerRef.current.innerHTML = "";
       }
     };
-  }, [symbol, theme]);
+    // studiesKey is the serialised studies array — safe dep for comparison
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [symbol, theme, studiesKey]);
 
   return (
     <div
@@ -87,11 +93,11 @@ export function TradingViewTicker() {
     script.async = true;
     script.innerHTML = JSON.stringify({
       symbols: [
+        { proName: "COINBASE:BTCUSD", title: "BTC/USD" },
+        { proName: "BITSTAMP:BTCUSD", title: "BTC (Bitstamp)" },
         { proName: "BINANCE:BTCUSDT", title: "BTC/USDT" },
         { proName: "BINANCE:ETHUSDT", title: "ETH/USDT" },
         { proName: "BINANCE:SOLUSDT", title: "SOL/USDT" },
-        { proName: "BINANCE:BNBUSDT", title: "BNB/USDT" },
-        { proName: "COINBASE:BASEUSD", title: "BASE/USD" },
       ],
       showSymbolLogo: true,
       isTransparent: true,
