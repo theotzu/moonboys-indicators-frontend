@@ -133,14 +133,14 @@ export function IndicatorChart() {
                   src={ind.image}
                   alt={`${ind.label} indicator preview`}
                   fill
-                  className="object-cover"
+                  className="object-cover z-10"
                   onError={(e) => {
                     // Hide broken image — placeholder shows instead
                     (e.currentTarget as HTMLImageElement).style.display = "none";
                   }}
                 />
-                {/* Placeholder shown until image is added */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-gray-700">
+                {/* Placeholder — behind the image (z-0), only visible on error */}
+                <div className="absolute inset-0 z-0 flex flex-col items-center justify-center gap-2 text-gray-700">
                   <span className="text-3xl">📊</span>
                   <span className="text-xs">Screenshot coming soon</span>
                 </div>
