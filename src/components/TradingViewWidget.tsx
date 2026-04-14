@@ -12,7 +12,7 @@ interface TradingViewWidgetProps {
 /**
  * Embeds a TradingView Advanced Chart widget.
  * symbol format: "EXCHANGE:PAIR" e.g. "COINBASE:BTCUSD"
- * studies format: published script IDs prefixed with "PUB;" e.g. ["PUB;KDICpAIL"]
+ * studies format: published script IDs prefixed with "PUB;" e.g. ["PUB;5xZSUQ3b"]
  */
 export function TradingViewWidget({
   symbol = "COINBASE:BTCUSD",
