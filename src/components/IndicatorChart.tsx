@@ -22,7 +22,7 @@ const INDICATORS = [
     btcOnly: false,
     description:
       "44 / 125 / 200-day SMAs with a colour-coded band. Gold = bullish, blue = risk-off, gray = neutral. Works on any asset — great for reading macro trend regime at a glance.",
-    scriptUrl: "https://www.tradingview.com/script/KDICpAIL-Moon-Boys-Line/",
+    scriptUrl: "https://www.tradingview.com/script/5xZSUQ3b-MoonBoys-Line/",
     author: "theotzu",
     tags: ["Trend", "SMA", "Any Asset"],
     image: "/indicators/moon-boys-line.png",

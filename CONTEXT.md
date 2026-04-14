@@ -113,7 +113,7 @@ All are open-source Pine Script™ tools published on TradingView. **TradingView
 
 | Indicator | Author | BTC Only? | TradingView URL |
 |---|---|---|---|
-| Moon Boys Line | theotzu | No | https://www.tradingview.com/script/KDICpAIL-Moon-Boys-Line/ |
+| Moon Boys Line | theotzu | No | https://www.tradingview.com/script/5xZSUQ3b-MoonBoys-Line/ |
 | Dollarized Volume | VickzinBK | No | https://www.tradingview.com/script/GKRGy2vD-Moon-Boys-Dollarized-Volume/ |
 | BTC Production Cost Daily | VickzinBK | Yes | https://www.tradingview.com/script/kDOElEFI-Moon-Boys-BTC-Production-Cost-Daily/ |
 | BTC Liquidation Heatmap | VickzinBK | Yes | https://www.tradingview.com/script/L5TplYwb-Moon-Boys-BTC-Liquidation-Heatmap/ |
