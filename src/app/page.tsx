@@ -1,6 +1,6 @@
 import { TradingViewTicker } from "@/components/TradingViewWidget";
 import { IndicatorChart } from "@/components/IndicatorChart";
-import { SOCIAL_LINKS } from "@/lib/socials";
+import { SOCIAL_LINKS, PODCAST_PLATFORMS } from "@/lib/socials";
 
 export default function HomePage() {
   return (
@@ -25,35 +25,60 @@ export default function HomePage() {
             <span className="text-yellow-400">To The Moon 🌙</span>
           </h1>
           <p className="text-gray-400 text-lg md:text-xl max-w-xl mx-auto mb-10 leading-relaxed">
-            Trend regimes, mining cost floors, liquidation heatmaps, and
-            capital flow — all open-source and free on TradingView.
+            Crypto trading talk and market analysis — live on YouTube and Twitch.
+            Plus open-source indicators we built and ship for free on TradingView.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="#indicators"
-              className="px-8 py-3 bg-yellow-400 text-black font-bold rounded-lg hover:bg-yellow-300 transition-colors"
-            >
-              View Indicators
-            </a>
-            <a
-              href="https://discord.com/invite/8qf3PTuzYw"
+              href="https://www.youtube.com/@MoonBoysPodcast"
               target="_blank"
               rel="noopener noreferrer"
+              className="px-8 py-3 bg-yellow-400 text-black font-bold rounded-lg hover:bg-yellow-300 transition-colors"
+            >
+              Watch the Podcast
+            </a>
+            <a
+              href="#indicators"
               className="px-8 py-3 border border-yellow-500/50 text-yellow-400 font-bold rounded-lg hover:bg-yellow-500/10 transition-colors"
             >
-              Join the Discord
+              See Our Indicators
             </a>
           </div>
         </div>
       </section>
 
+      {/* Podcast Section */}
+      <section id="podcast" className="px-6 py-16 max-w-4xl mx-auto w-full text-center border-t border-yellow-500/10">
+        <h2 className="text-3xl md:text-4xl font-bold mb-3">
+          The <span className="text-yellow-400">Podcast</span>
+        </h2>
+        <p className="text-gray-400 max-w-xl mx-auto mb-8 leading-relaxed">
+          Markets, charts, and unfiltered crypto takes. We go live on YouTube and
+          Twitch — pick your platform.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          {PODCAST_PLATFORMS.map((p) => (
+            <a
+              key={p.label}
+              href={p.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-yellow-500/40 bg-yellow-500/5 text-yellow-400 font-semibold hover:bg-yellow-500/10 transition-colors"
+            >
+              <span aria-hidden="true">{p.icon}</span>
+              <span>Watch on {p.label}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
       {/* Indicators Section */}
-      <section id="indicators" className="px-6 py-16 max-w-6xl mx-auto w-full">
+      <section id="indicators" className="px-6 py-16 max-w-6xl mx-auto w-full border-t border-yellow-500/10">
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-bold mb-3">
             Our <span className="text-yellow-400">Indicators</span>
           </h2>
-          <p className="text-gray-400 text-sm">
+          <p className="text-gray-400 text-sm max-w-xl mx-auto">
             Open-source Pine Script™ tools published on TradingView — free for everyone.
           </p>
         </div>
@@ -61,50 +86,11 @@ export default function HomePage() {
         <IndicatorChart />
       </section>
 
-      {/* Community Section */}
-      <section className="px-6 py-24 border-t border-yellow-500/10">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-3">
-            Join the <span className="text-yellow-400">Community</span>
-          </h2>
-          <p className="text-gray-400 mb-12 max-w-lg mx-auto">
-            We&apos;re live on YouTube, posting charts on X, and talking in Discord every
-            day. Come hang with the Moon Boys.
-          </p>
-
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-12">
-            {SOCIAL_LINKS.map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col items-center gap-2 px-4 py-5 rounded-xl border border-yellow-500/20 bg-gray-900/50 hover:border-yellow-400/50 hover:bg-yellow-500/5 transition-all group"
-              >
-                <span className="text-2xl" aria-hidden="true">{s.icon}</span>
-                <span className="text-sm font-medium text-gray-300 group-hover:text-yellow-400 transition-colors">
-                  {s.label}
-                </span>
-              </a>
-            ))}
-          </div>
-
-          <a
-            href="https://substack.com/@moonmag"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-yellow-400/10 border border-yellow-500/30 text-yellow-400 font-semibold hover:bg-yellow-400/20 transition-colors"
-          >
-            📬 Sign up for the Moon Boys Newsletter
-          </a>
-        </div>
-      </section>
-
       {/* Footer */}
-      <footer className="border-t border-yellow-500/20 px-6 py-10">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+      <footer className="border-t border-yellow-500/20 px-6 py-10 mt-12">
+        <div className="max-w-6xl mx-auto flex flex-col items-center gap-6">
           <div className="flex items-center gap-2">
-            <span className="text-xl">🌙</span>
+            <span className="text-xl" aria-hidden="true">🌙</span>
             <span className="text-yellow-400 font-bold">Moon Boys Podcast</span>
           </div>
 
@@ -130,5 +116,3 @@ export default function HomePage() {
     </>
   );
 }
-
-
