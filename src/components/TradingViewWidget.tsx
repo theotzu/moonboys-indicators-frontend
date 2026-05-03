@@ -56,10 +56,9 @@ export function TradingViewWidget({
     script.innerHTML = JSON.stringify(config);
     containerRef.current.appendChild(script);
 
+    const node = containerRef.current;
     return () => {
-      if (containerRef.current) {
-        containerRef.current.innerHTML = "";
-      }
+      if (node) node.innerHTML = "";
     };
     // studiesKey is the serialised studies array — safe dep for comparison
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -106,10 +105,9 @@ export function TradingViewTicker() {
 
     containerRef.current.appendChild(script);
 
+    const node = containerRef.current;
     return () => {
-      if (containerRef.current) {
-        containerRef.current.innerHTML = "";
-      }
+      if (node) node.innerHTML = "";
     };
   }, []);
 

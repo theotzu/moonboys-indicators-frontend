@@ -1,11 +1,7 @@
 "use client";
 
 import Link from "next/link";
-
-const SOCIALS = [
-  { label: "YouTube", href: "https://www.youtube.com/@MoonBoysPodcast", icon: "▶" },
-  { label: "X", href: "https://x.com/moonboyspodcast", icon: "𝕏" },
-];
+import { NAV_SOCIALS } from "@/lib/socials";
 
 export function Navbar() {
   return (
@@ -25,7 +21,7 @@ export function Navbar() {
           Indicators
         </Link>
         <div className="flex items-center gap-3">
-          {SOCIALS.map((s) => (
+          {NAV_SOCIALS.map((s) => (
             <a
               key={s.label}
               href={s.href}

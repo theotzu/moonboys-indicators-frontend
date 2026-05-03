@@ -1,16 +1,6 @@
 import { TradingViewTicker } from "@/components/TradingViewWidget";
 import { IndicatorChart } from "@/components/IndicatorChart";
-
-const SOCIAL_LINKS = [
-  { label: "YouTube", href: "https://www.youtube.com/@MoonBoysPodcast", emoji: "▶" },
-  { label: "Instagram", href: "https://www.instagram.com/moonboyspodcast", emoji: "📸" },
-  { label: "X / Twitter", href: "https://x.com/moonboyspodcast", emoji: "𝕏" },
-  { label: "TikTok", href: "https://www.tiktok.com/@moonboyspodcast", emoji: "♪" },
-  { label: "Discord", href: "https://discord.com/invite/8qf3PTuzYw", emoji: "◈" },
-  { label: "Telegram", href: "https://t.me/moonboyspod", emoji: "✈" },
-  { label: "Twitch", href: "https://www.twitch.tv/moonboyspodcast", emoji: "🎮" },
-  { label: "Patreon", href: "https://www.patreon.com/cw/moonboyspodcast", emoji: "🎁" },
-];
+import { SOCIAL_LINKS } from "@/lib/socials";
 
 export default function HomePage() {
   return (
@@ -91,7 +81,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="flex flex-col items-center gap-2 px-4 py-5 rounded-xl border border-yellow-500/20 bg-gray-900/50 hover:border-yellow-400/50 hover:bg-yellow-500/5 transition-all group"
               >
-                <span className="text-2xl">{s.emoji}</span>
+                <span className="text-2xl" aria-hidden="true">{s.icon}</span>
                 <span className="text-sm font-medium text-gray-300 group-hover:text-yellow-400 transition-colors">
                   {s.label}
                 </span>
