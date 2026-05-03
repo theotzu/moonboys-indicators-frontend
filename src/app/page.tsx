@@ -23,7 +23,7 @@ export default function HomePage() {
             <span className="bg-gradient-to-r from-purple-300 to-teal-300 bg-clip-text text-transparent">Podcast</span>
           </h1>
           <p className="text-gray-300 text-lg md:text-xl max-w-xl mx-auto mb-4 leading-relaxed">
-            Crypto trading talk and market analysis — live on YouTube and Twitch.
+            Crypto trading talk and market analysis — live on Twitch and X.
           </p>
           <p className="text-gray-500 text-base max-w-xl mx-auto mb-10 leading-relaxed">
             Plus open-source indicators we built and ship for free on TradingView.
@@ -53,8 +53,8 @@ export default function HomePage() {
           The <span className="text-purple-300">Podcast</span>
         </h2>
         <p className="text-gray-400 max-w-xl mx-auto mb-8 leading-relaxed">
-          Markets, charts, and unfiltered crypto takes. We go live on YouTube and
-          Twitch — pick your platform.
+          Markets, charts, and unfiltered crypto takes. We go live on Twitch and X —
+          and post the recordings on YouTube.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           {PODCAST_PLATFORMS.map((p) => (
