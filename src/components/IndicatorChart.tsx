@@ -134,6 +134,7 @@ export function IndicatorChart() {
                   src={ind.image}
                   alt={`${ind.label} indicator preview`}
                   fill
+                  sizes="(min-width: 640px) 50vw, 100vw"
                   className="object-cover z-10"
                   onError={(e) => {
                     // Hide broken image — placeholder shows instead
