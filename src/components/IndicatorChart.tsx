@@ -152,7 +152,7 @@ export function IndicatorChart() {
                 <div className="flex items-start justify-between gap-2">
                   <div>
                     <p className="font-semibold text-white text-sm">{ind.label}</p>
-                    <p className="text-gray-600 text-xs mt-0.5">by @{ind.author}</p>
+                    <p className="text-gray-500 text-xs mt-0.5">by @{ind.author}</p>
                   </div>
                   <div className="flex flex-wrap gap-1 justify-end">
                     {ind.tags.map((tag) => (
@@ -190,8 +190,8 @@ export function IndicatorChart() {
               </a>
 
               {hidden && (
-                <p className="text-xs text-orange-400/60 text-center">
-                  BTC only — switch to BTC above
+                <p className="text-xs text-orange-300 text-center mt-2 font-medium">
+                  ↑ Switch to BTC above to enable
                 </p>
               )}
               </div>

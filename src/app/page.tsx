@@ -132,7 +132,7 @@ export default function HomePage() {
             ))}
           </div>
 
-          <p className="text-gray-600 text-xs text-center">
+          <p className="text-gray-500 text-xs text-center">
             © {new Date().getFullYear()} Moon Boys. Not financial advice.
           </p>
         </div>
