@@ -89,8 +89,8 @@ export function IndicatorChart() {
               aria-pressed={symbol === s.value}
               className={`min-h-11 min-w-11 px-4 py-2.5 rounded-md text-sm font-semibold transition-colors ${
                 symbol === s.value
-                  ? "bg-yellow-400 text-black"
-                  : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+                  ? "bg-purple-500 text-white"
+                  : "bg-[#1e1730] text-gray-300 hover:bg-[#2a2240]"
               }`}
             >
               {s.label}
@@ -100,8 +100,8 @@ export function IndicatorChart() {
       </div>
 
       {/* Note about adding indicators */}
-      <div className="flex items-start gap-3 px-4 py-3 rounded-lg bg-yellow-500/5 border border-yellow-500/20 text-sm text-gray-400">
-        <span className="text-yellow-400 text-base mt-0.5 shrink-0">ℹ</span>
+      <div className="flex items-start gap-3 px-4 py-3 rounded-lg bg-teal-500/5 border border-teal-500/20 text-sm text-gray-400">
+        <span className="text-teal-300 text-base mt-0.5 shrink-0">ℹ</span>
         <span>
           Our indicators are Pine Script™ tools published on TradingView. To use them, click
           &ldquo;Add to chart&rdquo; on any card below — they&apos;ll open directly in TradingView
@@ -118,12 +118,12 @@ export function IndicatorChart() {
               key={ind.id}
               className={`rounded-xl border overflow-hidden flex flex-col transition-opacity ${
                 hidden
-                  ? "border-gray-800 bg-gray-900/30 opacity-40"
-                  : "border-yellow-500/20 bg-gray-900/50"
+                  ? "border-[#1e1730] bg-[#15101f]/30 opacity-40"
+                  : "border-purple-500/25 bg-[#15101f]/60"
               }`}
             >
               {/* Screenshot preview */}
-              <div className="relative w-full aspect-video bg-gray-900 border-b border-yellow-500/10">
+              <div className="relative w-full aspect-video bg-[#15101f] border-b border-purple-500/15">
                 <Image
                   src={ind.image}
                   alt={`${ind.label} indicator preview`}
@@ -154,10 +154,10 @@ export function IndicatorChart() {
                         key={tag}
                         className={`px-1.5 py-0.5 text-xs rounded-full border whitespace-nowrap ${
                           tag === "BTC Only"
-                            ? "border-orange-500/40 text-orange-400/80 bg-orange-500/10"
+                            ? "border-orange-500/40 text-orange-300 bg-orange-500/10"
                             : tag === "Any Asset"
-                            ? "border-green-500/40 text-green-400/80 bg-green-500/10"
-                            : "border-yellow-500/20 text-yellow-400/60 bg-yellow-500/5"
+                            ? "border-teal-500/40 text-teal-300 bg-teal-500/10"
+                            : "border-purple-500/30 text-purple-300/80 bg-purple-500/5"
                         }`}
                       >
                         {tag}
@@ -176,8 +176,8 @@ export function IndicatorChart() {
                 rel="noopener noreferrer"
                 className={`mt-auto flex items-center justify-center gap-2 py-2 px-4 rounded-lg text-sm font-semibold transition-colors ${
                   hidden
-                    ? "bg-gray-800 text-gray-600 cursor-not-allowed pointer-events-none"
-                    : "bg-yellow-400/10 border border-yellow-500/40 text-yellow-400 hover:bg-yellow-400/20"
+                    ? "bg-[#1e1730] text-gray-600 cursor-not-allowed pointer-events-none"
+                    : "bg-purple-500/10 border border-purple-500/40 text-purple-300 hover:bg-purple-500/20 hover:text-purple-200"
                 }`}
               >
                 Add to chart on TradingView →
