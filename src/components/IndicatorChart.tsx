@@ -87,7 +87,8 @@ export function IndicatorChart() {
             <button
               key={s.value}
               onClick={() => setSymbol(s.value)}
-              className={`px-4 py-1.5 rounded-md text-sm font-semibold transition-colors ${
+              aria-pressed={symbol === s.value}
+              className={`min-h-11 min-w-11 px-4 py-2.5 rounded-md text-sm font-semibold transition-colors ${
                 symbol === s.value
                   ? "bg-yellow-400 text-black"
                   : "bg-gray-800 text-gray-300 hover:bg-gray-700"
@@ -133,6 +134,7 @@ export function IndicatorChart() {
                   src={ind.image}
                   alt={`${ind.label} indicator preview`}
                   fill
+                  sizes="(min-width: 640px) 50vw, 100vw"
                   className="object-cover z-10"
                   onError={(e) => {
                     // Hide broken image — placeholder shows instead
@@ -150,7 +152,7 @@ export function IndicatorChart() {
                 <div className="flex items-start justify-between gap-2">
                   <div>
                     <p className="font-semibold text-white text-sm">{ind.label}</p>
-                    <p className="text-gray-600 text-xs mt-0.5">by @{ind.author}</p>
+                    <p className="text-gray-500 text-xs mt-0.5">by @{ind.author}</p>
                   </div>
                   <div className="flex flex-wrap gap-1 justify-end">
                     {ind.tags.map((tag) => (
@@ -188,8 +190,8 @@ export function IndicatorChart() {
               </a>
 
               {hidden && (
-                <p className="text-xs text-orange-400/60 text-center">
-                  BTC only — switch to BTC above
+                <p className="text-xs text-orange-300 text-center mt-2 font-medium">
+                  ↑ Switch to BTC above to enable
                 </p>
               )}
               </div>

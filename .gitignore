@@ -10,6 +10,11 @@
 !.yarn/releases
 !.yarn/versions
 
+# alt package manager lockfiles (this repo uses npm — package-lock.json is canonical)
+yarn.lock
+pnpm-lock.yaml
+bun.lockb
+
 # testing
 /coverage
 

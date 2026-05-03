@@ -1,16 +1,6 @@
 import { TradingViewTicker } from "@/components/TradingViewWidget";
 import { IndicatorChart } from "@/components/IndicatorChart";
-
-const SOCIAL_LINKS = [
-  { label: "YouTube", href: "https://www.youtube.com/@MoonBoysPodcast", emoji: "▶" },
-  { label: "Instagram", href: "https://www.instagram.com/moonboyspodcast", emoji: "📸" },
-  { label: "X / Twitter", href: "https://x.com/moonboyspodcast", emoji: "𝕏" },
-  { label: "TikTok", href: "https://www.tiktok.com/@moonboyspodcast", emoji: "♪" },
-  { label: "Discord", href: "https://discord.com/invite/8qf3PTuzYw", emoji: "◈" },
-  { label: "Telegram", href: "https://t.me/moonboyspod", emoji: "✈" },
-  { label: "Twitch", href: "https://www.twitch.tv/moonboyspodcast", emoji: "🎮" },
-  { label: "Patreon", href: "https://www.patreon.com/cw/moonboyspodcast", emoji: "🎁" },
-];
+import { SOCIAL_LINKS } from "@/lib/socials";
 
 export default function HomePage() {
   return (
@@ -30,7 +20,7 @@ export default function HomePage() {
           <span className="inline-block px-3 py-1 mb-6 text-xs font-semibold tracking-widest uppercase text-yellow-400 border border-yellow-500/40 rounded-full bg-yellow-500/10">
             Moon Boys Podcast
           </span>
-          <h1 className="text-5xl md:text-7xl font-extrabold leading-none tracking-tight mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-none tracking-tight mb-6">
             We&apos;re All Going{" "}
             <span className="text-yellow-400">To The Moon 🌙</span>
           </h1>
@@ -91,7 +81,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="flex flex-col items-center gap-2 px-4 py-5 rounded-xl border border-yellow-500/20 bg-gray-900/50 hover:border-yellow-400/50 hover:bg-yellow-500/5 transition-all group"
               >
-                <span className="text-2xl">{s.emoji}</span>
+                <span className="text-2xl" aria-hidden="true">{s.icon}</span>
                 <span className="text-sm font-medium text-gray-300 group-hover:text-yellow-400 transition-colors">
                   {s.label}
                 </span>
@@ -132,7 +122,7 @@ export default function HomePage() {
             ))}
           </div>
 
-          <p className="text-gray-600 text-xs text-center">
+          <p className="text-gray-500 text-xs text-center">
             © {new Date().getFullYear()} Moon Boys. Not financial advice.
           </p>
         </div>

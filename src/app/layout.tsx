@@ -10,12 +10,24 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Moon Boys | Crypto Indicators",
-  description: "Premium crypto trading indicators by the Moon Boys. Get edge in any market.",
+  metadataBase: new URL("https://www.moonboyspod.com"),
+  title: "Moon Boys Podcast | Free Crypto Trading Indicators",
+  description: "Open-source TradingView indicators by the Moon Boys Podcast — trend regimes, mining cost floors, liquidation heatmaps, capital flow. Free for everyone.",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Moon Boys | Crypto Indicators",
-    description: "Premium crypto trading indicators by the Moon Boys.",
+    title: "Moon Boys Podcast | Free Crypto Trading Indicators",
+    description: "Open-source TradingView indicators by the Moon Boys Podcast.",
     type: "website",
+    url: "https://www.moonboyspod.com",
+    siteName: "Moon Boys Podcast",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Moon Boys Podcast | Free Crypto Trading Indicators",
+    description: "Open-source TradingView indicators — free for everyone.",
+    creator: "@moonboyspodcast",
   },
 };
 

@@ -56,10 +56,9 @@ export function TradingViewWidget({
     script.innerHTML = JSON.stringify(config);
     containerRef.current.appendChild(script);
 
+    const node = containerRef.current;
     return () => {
-      if (containerRef.current) {
-        containerRef.current.innerHTML = "";
-      }
+      if (node) node.innerHTML = "";
     };
     // studiesKey is the serialised studies array — safe dep for comparison
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -93,25 +92,22 @@ export function TradingViewTicker() {
     script.async = true;
     script.innerHTML = JSON.stringify({
       symbols: [
-        { proName: "COINBASE:BTCUSD", title: "BTC/USD" },
-        { proName: "BITSTAMP:BTCUSD", title: "BTC (Bitstamp)" },
-        { proName: "BINANCE:BTCUSDT", title: "BTC/USDT" },
-        { proName: "BINANCE:ETHUSDT", title: "ETH/USDT" },
-        { proName: "BINANCE:SOLUSDT", title: "SOL/USDT" },
+        { proName: "COINBASE:BTCUSD", title: "BTC" },
+        { proName: "COINBASE:ETHUSD", title: "ETH" },
+        { proName: "COINBASE:SOLUSD", title: "SOL" },
       ],
       showSymbolLogo: true,
       isTransparent: true,
-      displayMode: "adaptive",
+      displayMode: "compact",
       colorTheme: "dark",
       locale: "en",
     });
 
     containerRef.current.appendChild(script);
 
+    const node = containerRef.current;
     return () => {
-      if (containerRef.current) {
-        containerRef.current.innerHTML = "";
-      }
+      if (node) node.innerHTML = "";
     };
   }, []);
 
