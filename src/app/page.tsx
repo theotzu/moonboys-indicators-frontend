@@ -18,15 +18,14 @@ export default function HomePage() {
         </div>
 
         <div className="relative z-10 max-w-3xl mx-auto">
-          <span className="inline-block px-3 py-1 mb-6 text-xs font-semibold tracking-widest uppercase text-purple-300 border border-purple-500/40 rounded-full bg-purple-500/10">
-            Moon Boys Podcast
-          </span>
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-none tracking-tight mb-6">
-            We&apos;re All Going{" "}
-            <span className="bg-gradient-to-r from-purple-300 to-teal-300 bg-clip-text text-transparent">To The Moon 🌙</span>
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-none tracking-tight mb-6">
+            Moon Boys{" "}
+            <span className="bg-gradient-to-r from-purple-300 to-teal-300 bg-clip-text text-transparent">Podcast</span>
           </h1>
-          <p className="text-gray-400 text-lg md:text-xl max-w-xl mx-auto mb-10 leading-relaxed">
+          <p className="text-gray-300 text-lg md:text-xl max-w-xl mx-auto mb-4 leading-relaxed">
             Crypto trading talk and market analysis — live on YouTube and Twitch.
+          </p>
+          <p className="text-gray-500 text-base max-w-xl mx-auto mb-10 leading-relaxed">
             Plus open-source indicators we built and ship for free on TradingView.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
