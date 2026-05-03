@@ -12,6 +12,11 @@ function initials(name: string) {
 
 function PersonCard({ p }: { p: Person }) {
   const href = p.href ?? (p.handle ? `https://x.com/${p.handle}` : undefined);
+  const subtitle = p.handle
+    ? `@${p.handle}`
+    : p.href
+    ? p.href.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")
+    : null;
   const Wrap = href ? "a" : "div";
   return (
     <Wrap
@@ -31,9 +36,9 @@ function PersonCard({ p }: { p: Person }) {
       </div>
       <div>
         <p className="font-semibold text-white text-sm">{p.name}</p>
-        {p.handle && (
+        {subtitle && (
           <p className="text-purple-300/80 text-xs mt-0.5 group-hover:text-purple-300">
-            @{p.handle}
+            {subtitle}
           </p>
         )}
       </div>

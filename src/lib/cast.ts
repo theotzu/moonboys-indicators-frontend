@@ -11,11 +11,11 @@ export interface Person {
 }
 
 export const HOSTS: Person[] = [
-  { name: "Matthew Smeed",  handle: "matthewsmeed" },
-  { name: "withthecoke",    handle: "withthecoke" },
-  { name: "Rom Reactor",    handle: "romreactor" },
-  { name: "Theo Tzu",       handle: "theotzu_" },
-  { name: "AiAksel",        handle: "aiaksel" },
+  { name: "Matt Smeed",     handle: "MattSmeed" },
+  { name: "Coke",           handle: "withthecoke" },
+  { name: "Rom Reactor",    handle: "vickzinbk" },
+  { name: "Theo Tzu",       href: "https://theotzu.com" },
+  { name: "Imagine Aksel",  handle: "imagineaksel" },
 ];
 
 export const GUESTS: Person[] = [
