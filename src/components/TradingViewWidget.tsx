@@ -93,15 +93,13 @@ export function TradingViewTicker() {
     script.async = true;
     script.innerHTML = JSON.stringify({
       symbols: [
-        { proName: "COINBASE:BTCUSD", title: "BTC/USD" },
-        { proName: "BITSTAMP:BTCUSD", title: "BTC (Bitstamp)" },
-        { proName: "BINANCE:BTCUSDT", title: "BTC/USDT" },
-        { proName: "BINANCE:ETHUSDT", title: "ETH/USDT" },
-        { proName: "BINANCE:SOLUSDT", title: "SOL/USDT" },
+        { proName: "COINBASE:BTCUSD", title: "BTC" },
+        { proName: "COINBASE:ETHUSD", title: "ETH" },
+        { proName: "COINBASE:SOLUSD", title: "SOL" },
       ],
       showSymbolLogo: true,
       isTransparent: true,
-      displayMode: "adaptive",
+      displayMode: "compact",
       colorTheme: "dark",
       locale: "en",
     });
