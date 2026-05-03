@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { TradingViewWidget } from "./TradingViewWidget";
 
 /**
  * INDICATOR IMAGES
@@ -98,11 +97,6 @@ export function IndicatorChart() {
             </button>
           ))}
         </div>
-      </div>
-
-      {/* Live chart */}
-      <div className="rounded-xl border border-yellow-500/20 overflow-hidden">
-        <TradingViewWidget symbol={symbol} height={520} />
       </div>
 
       {/* Note about adding indicators */}
