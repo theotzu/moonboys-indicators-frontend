@@ -38,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistSans.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-black text-white">
+      <body className="min-h-full flex flex-col bg-[#0a0612] text-white">
         <Web3Providers>
           <Navbar />
           <main className="flex-1 pt-[72px]">{children}</main>
