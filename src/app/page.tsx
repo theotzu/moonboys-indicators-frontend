@@ -90,10 +90,7 @@ export default function HomePage() {
       {/* Footer */}
       <footer className="border-t border-purple-500/20 px-6 py-10 mt-12">
         <div className="max-w-6xl mx-auto flex flex-col items-center gap-6">
-          <div className="flex items-center gap-2">
-            <span className="text-xl" aria-hidden="true">🌙</span>
-            <span className="text-purple-300 font-bold">Moon Boys Podcast</span>
-          </div>
+          <span className="text-purple-300 font-bold">Moon Boys Podcast</span>
 
           <div className="flex flex-wrap justify-center gap-x-5 gap-y-2">
             {SOCIAL_LINKS.map((s) => (
