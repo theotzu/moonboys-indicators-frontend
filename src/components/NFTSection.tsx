@@ -5,12 +5,14 @@ import Image from "next/image";
 // and update `art` here.
 const NFT = {
   name: "Zero G Syndicate",
-  tagline: "The Moon Boys NFT collection.",
+  tagline:
+    "A pixel-born brotherhood of outcasts, visionaries, and glitchy gods drifting through the vacuum of forgotten blockchains.",
   description:
-    "An on-chain crew badge for Moon Boys believers. Holders get access to the inner circle, future drops, and bragging rights for being early.",
+    "Each character is a unique fragment of cosmic rebellion — forged in low-orbit, coded in resistance. A lo-fi, high-concept collection of pixelated avatars, blending sci-fi mysticism, underground tech, and street-level lore. No roadmap. No promises. Just drift.",
   art: "https://i2c.seadn.io/abstract/0xe953600d068c00c6fa22432f00b34d0ffc6759d7/785ca8184e98007a395a7e7dbd560c/09785ca8184e98007a395a7e7dbd560c.png",
   marketplaceUrl: "https://opensea.io/collection/zero-g-syndicate",
   chain: "Abstract",
+  soldOut: true,  // 84/84 minted at 0.00222 ETH
 };
 
 export function NFTSection() {
@@ -56,18 +58,17 @@ export function NFTSection() {
           <p className="text-gray-400 leading-relaxed">{NFT.description}</p>
 
           <div className="flex flex-wrap items-center gap-3 mt-2">
-            {NFT.marketplaceUrl ? (
-              <a
-                href={NFT.marketplaceUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-3 rounded-lg bg-purple-500 text-white font-bold hover:bg-purple-400 transition-colors"
-              >
-                View Collection
-              </a>
-            ) : (
-              <span className="px-6 py-3 rounded-lg border border-purple-500/30 text-purple-300/70 font-semibold">
-                Marketplace link coming soon
+            <a
+              href={NFT.marketplaceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 rounded-lg bg-purple-500 text-white font-bold hover:bg-purple-400 transition-colors"
+            >
+              View on OpenSea
+            </a>
+            {NFT.soldOut && (
+              <span className="px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-teal-400/50 text-teal-300 bg-teal-500/10">
+                Sold Out
               </span>
             )}
             {NFT.chain && (

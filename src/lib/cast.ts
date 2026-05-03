@@ -14,11 +14,11 @@ export const HOSTS: Person[] = [
   { name: "Matt Smeed",     handle: "MattSmeed" },
   { name: "Coke",           handle: "withthecoke" },
   { name: "Rom Reactor",    handle: "vickzinbk" },
-  { name: "Theo Tzu",       href: "https://theotzu.com" },
+  { name: "Theo Tzu",       handle: "theotzu_" },
   { name: "Imagine Aksel",  handle: "imagineaksel" },
 ];
 
 export const GUESTS: Person[] = [
-  { name: "Pwnsauce",       handle: "Pwnsauce" },
-  { name: "Pio Vincenzo",   handle: "pio_vincenzo" },
+  { name: "Pwnsauce",       handle: "STAKINGSEUSS" },
+  { name: "Pio Vincenzo",   handle: "piovincenzo_" },
 ];
