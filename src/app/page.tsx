@@ -30,7 +30,7 @@ export default function HomePage() {
           <span className="inline-block px-3 py-1 mb-6 text-xs font-semibold tracking-widest uppercase text-yellow-400 border border-yellow-500/40 rounded-full bg-yellow-500/10">
             Moon Boys Podcast
           </span>
-          <h1 className="text-5xl md:text-7xl font-extrabold leading-none tracking-tight mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-none tracking-tight mb-6">
             We&apos;re All Going{" "}
             <span className="text-yellow-400">To The Moon 🌙</span>
           </h1>

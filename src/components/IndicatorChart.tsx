@@ -87,7 +87,8 @@ export function IndicatorChart() {
             <button
               key={s.value}
               onClick={() => setSymbol(s.value)}
-              className={`px-4 py-1.5 rounded-md text-sm font-semibold transition-colors ${
+              aria-pressed={symbol === s.value}
+              className={`min-h-11 min-w-11 px-4 py-2.5 rounded-md text-sm font-semibold transition-colors ${
                 symbol === s.value
                   ? "bg-yellow-400 text-black"
                   : "bg-gray-800 text-gray-300 hover:bg-gray-700"
