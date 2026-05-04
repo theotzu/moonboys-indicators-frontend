@@ -1,5 +1,7 @@
 import { TradingViewTicker } from "@/components/TradingViewWidget";
 import { IndicatorChart } from "@/components/IndicatorChart";
+import { HostsSection, GuestsSection } from "@/components/CastSection";
+import { NFTSection } from "@/components/NFTSection";
 import { SOCIAL_LINKS, PODCAST_PLATFORMS } from "@/lib/socials";
 
 export default function HomePage() {
@@ -85,6 +87,12 @@ export default function HomePage() {
 
         <IndicatorChart />
       </section>
+
+      <HostsSection />
+
+      <GuestsSection />
+
+      <NFTSection />
 
       {/* Footer */}
       <footer className="border-t border-purple-500/20 px-6 py-10 mt-12">
