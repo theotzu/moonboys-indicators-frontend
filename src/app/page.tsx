@@ -67,7 +67,7 @@ export default function HomePage() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-purple-500/40 bg-purple-500/5 text-purple-300 font-semibold hover:bg-purple-500/15 transition-colors"
             >
-              <span aria-hidden="true">{p.icon}</span>
+              <i className={p.icon} aria-hidden="true"></i>
               <span>Watch on {p.label}</span>
             </a>
           ))}
@@ -99,16 +99,17 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto flex flex-col items-center gap-6">
           <span className="text-purple-300 font-bold">Moon Boys Podcast</span>
 
-          <div className="flex flex-wrap justify-center gap-x-5 gap-y-2">
+          <div className="flex flex-wrap justify-center gap-2">
             {SOCIAL_LINKS.map((s) => (
               <a
                 key={s.label}
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 hover:text-purple-300 transition-colors text-sm"
+                aria-label={s.label}
+                className="flex items-center justify-center w-10 h-10 rounded-full text-gray-400 hover:text-purple-300 hover:bg-purple-500/10 transition-colors text-base"
               >
-                {s.label}
+                <i className={s.icon} aria-hidden="true"></i>
               </a>
             ))}
           </div>

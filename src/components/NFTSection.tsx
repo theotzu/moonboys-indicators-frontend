@@ -1,21 +1,37 @@
-import Image from "next/image";
+"use client";
 
-// Zero G Syndicate NFT collection — Abstract chain, contract 0xe953600d068c00c6fa22432f00b34d0ffc6759d7
-// Art is hotlinked from OpenSea's CDN; if it ever 404s, drop a copy at /public/nft/zero-g-syndicate.png
-// and update `art` here.
+import Image from "next/image";
+import { useEffect, useState } from "react";
+
+// Zero G Syndicate — Abstract chain, contract 0xe953600d068c00c6fa22432f00b34d0ffc6759d7
+// Art rotates randomly through /public/nft/zero-g/ZeroG_NNNN.png on each pageload.
+// To add/remove items, drop files in that directory and update SUPPLY below.
 const NFT = {
   name: "Zero G Syndicate",
   tagline:
     "A pixel-born brotherhood of outcasts, visionaries, and glitchy gods drifting through the vacuum of forgotten blockchains.",
   description:
     "Each character is a unique fragment of cosmic rebellion — forged in low-orbit, coded in resistance. A lo-fi, high-concept collection of pixelated avatars, blending sci-fi mysticism, underground tech, and street-level lore. No roadmap. No promises. Just drift.",
-  art: "https://i2c.seadn.io/abstract/0xe953600d068c00c6fa22432f00b34d0ffc6759d7/785ca8184e98007a395a7e7dbd560c/09785ca8184e98007a395a7e7dbd560c.png",
   marketplaceUrl: "https://opensea.io/collection/zero-g-syndicate",
   chain: "Abstract",
-  soldOut: true,  // 84/84 minted at 0.00222 ETH
+  soldOut: true,
 };
 
+const SUPPLY = 84;
+const FALLBACK_ID = 1;
+
+function pickArt(id: number) {
+  return `/nft/zero-g/ZeroG_${String(id).padStart(4, "0")}.png`;
+}
+
 export function NFTSection() {
+  // SSR uses #0001 as a stable default; once hydrated, swap to a random pick.
+  const [tokenId, setTokenId] = useState(FALLBACK_ID);
+
+  useEffect(() => {
+    setTokenId(Math.floor(Math.random() * SUPPLY) + 1);
+  }, []);
+
   return (
     <section
       id="nft"
@@ -26,17 +42,16 @@ export function NFTSection() {
         <div className="relative aspect-square rounded-2xl overflow-hidden border border-purple-500/30 bg-[#15101f]">
           <div className="absolute inset-0 bg-gradient-to-br from-purple-500/15 via-transparent to-teal-500/15 z-10 pointer-events-none" />
           <Image
-            src={NFT.art}
-            alt={`${NFT.name} key art`}
+            src={pickArt(tokenId)}
+            alt={`${NFT.name} #${tokenId}`}
             fill
             sizes="(min-width: 768px) 50vw, 100vw"
-            className="object-cover z-0"
+            className="object-cover z-0 image-pixelated"
+            priority={false}
           />
-          {/* Placeholder shows if image fails to load */}
-          <div className="absolute inset-0 -z-10 flex flex-col items-center justify-center gap-3 text-purple-300/40">
-            <span className="text-6xl">🪐</span>
-            <span className="text-sm uppercase tracking-widest">{NFT.name}</span>
-          </div>
+          <span className="absolute bottom-3 right-3 z-20 px-2 py-1 rounded-md bg-black/60 text-purple-200 text-xs font-mono backdrop-blur-sm">
+            #{tokenId}
+          </span>
         </div>
 
         {/* Copy */}
@@ -50,9 +65,7 @@ export function NFTSection() {
                 {NFT.name}
               </span>
             </h2>
-            <p className="text-gray-300 text-lg leading-relaxed">
-              {NFT.tagline}
-            </p>
+            <p className="text-gray-300 text-lg leading-relaxed">{NFT.tagline}</p>
           </div>
 
           <p className="text-gray-400 leading-relaxed">{NFT.description}</p>

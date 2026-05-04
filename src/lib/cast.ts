@@ -1,5 +1,5 @@
 // People on the show — hosts (recurring) and notable past guests.
-// Edit handles, roles, and photo paths as more details come in.
+// Edit handles, roles, photo paths, and episodeId as more details come in.
 
 export interface Person {
   name: string;
@@ -7,7 +7,8 @@ export interface Person {
   href?: string;            // override link (defaults to https://x.com/<handle>)
   role?: string;            // short role tag, e.g. "Host", "Producer"
   photo?: string;           // /public path, e.g. /cast/theotzu.jpg
-  episode?: string;         // for guests: episode title or link context
+  episodeId?: string;       // YouTube video ID for the guest's appearance
+  episodeTitle?: string;    // short title shown above the embed (optional)
 }
 
 export const HOSTS: Person[] = [
@@ -19,6 +20,20 @@ export const HOSTS: Person[] = [
 ];
 
 export const GUESTS: Person[] = [
-  { name: "Pwnsauce",       handle: "STAKINGSEUSS" },
-  { name: "Pio Vincenzo",   handle: "piovincenzo_" },
+  {
+    name: "Pio Vincenzo",
+    handle: "piovincenzo_",
+    episodeId: "_nAUIIC_Rko",
+    episodeTitle: "Options & Yield: Strategy₿, Tesla, and Bitcoin",
+  },
+  {
+    name: "Pwnsauce",
+    handle: "STAKINGSEUSS",
+    // TODO: episodeId for the Pwnsauce appearance
+  },
+  {
+    name: "DurkeyTurkey",
+    handle: "durkeyturkey",
+    // TODO: episodeId for the DurkeyTurkey appearance
+  },
 ];
