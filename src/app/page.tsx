@@ -2,7 +2,8 @@ import { TradingViewTicker } from "@/components/TradingViewWidget";
 import { IndicatorChart } from "@/components/IndicatorChart";
 import { HostsSection, GuestsSection } from "@/components/CastSection";
 import { NFTSection } from "@/components/NFTSection";
-import { SOCIAL_LINKS, PODCAST_PLATFORMS } from "@/lib/socials";
+import { LatestEpisode } from "@/components/LatestEpisode";
+import { SOCIAL_LINKS } from "@/lib/socials";
 
 export default function HomePage() {
   return (
@@ -49,30 +50,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Podcast Section */}
-      <section id="podcast" className="px-6 py-16 max-w-4xl mx-auto w-full text-center border-t border-purple-500/10">
-        <h2 className="text-3xl md:text-4xl font-bold mb-3">
-          The <span className="text-purple-300">Podcast</span>
-        </h2>
-        <p className="text-gray-400 max-w-xl mx-auto mb-8 leading-relaxed">
-          Markets, charts, and unfiltered crypto takes. We go live on Twitch and X —
-          and post the recordings on YouTube.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          {PODCAST_PLATFORMS.map((p) => (
-            <a
-              key={p.label}
-              href={p.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-purple-500/40 bg-purple-500/5 text-purple-300 font-semibold hover:bg-purple-500/15 transition-colors"
-            >
-              <i className={p.icon} aria-hidden="true"></i>
-              <span>Watch on {p.label}</span>
-            </a>
-          ))}
-        </div>
-      </section>
+      <LatestEpisode />
 
       {/* Indicators Section */}
       <section id="indicators" className="px-6 py-16 max-w-6xl mx-auto w-full border-t border-purple-500/10">

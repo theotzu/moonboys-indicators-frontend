@@ -16,7 +16,3 @@ export const SOCIAL_LINKS: SocialLink[] = [
   { label: "Newsletter", href: "https://substack.com/@moonmag",                 icon: "fas fa-envelope" },
   { label: "Linktree",   href: "https://linktr.ee/moonboyspodcast",             icon: "fas fa-link" },
 ];
-
-export const PODCAST_PLATFORMS = SOCIAL_LINKS.filter((s) =>
-  ["YouTube", "Twitch"].includes(s.label),
-);
