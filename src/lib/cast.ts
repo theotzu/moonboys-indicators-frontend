@@ -12,28 +12,31 @@ export interface Person {
 }
 
 export const HOSTS: Person[] = [
-  { name: "Matt Smeed",     handle: "MattSmeed" },
-  { name: "Coke",           handle: "withthecoke" },
-  { name: "Rom Reactor",    handle: "vickzinbk" },
-  { name: "Theo Tzu",       handle: "theotzu_" },
-  { name: "Imagine Aksel",  handle: "imagineaksel" },
+  { name: "Matt Smeed",     handle: "MattSmeed",    photo: "/cast/matt-smeed.jpg" },
+  { name: "Coke",           handle: "withthecoke",  photo: "/cast/coke.jpg" },
+  { name: "Rom Reactor",    handle: "vickzinbk",    photo: "/cast/rom-reactor.jpg" },
+  { name: "Theo Tzu",       handle: "theotzu_",     photo: "/cast/theo-tzu.jpg" },
+  { name: "Imagine Aksel",  handle: "imagineaksel", photo: "/cast/imagine-aksel.jpg" },
 ];
 
 export const GUESTS: Person[] = [
   {
     name: "Pio Vincenzo",
     handle: "piovincenzo_",
+    photo: "/cast/pio-vincenzo.jpg",
     episodeId: "_nAUIIC_Rko",
     episodeTitle: "Options & Yield: Strategy₿, Tesla, and Bitcoin",
   },
   {
     name: "Pwnsauce",
     handle: "STAKINGSEUSS",
+    photo: "/cast/pwnsauce.jpg",
     // TODO: episodeId for the Pwnsauce appearance
   },
   {
     name: "DurkeyTurkey",
     handle: "durkeyturkey",
+    photo: "/cast/durkeyturkey.png",
     // TODO: episodeId for the DurkeyTurkey appearance
   },
 ];
