@@ -36,8 +36,8 @@ export const GUESTS: Person[] = [
   },
   {
     name: "DurkeyTurkey",
-    handle: "durkeyturkey",
-    photo: "/cast/durkeyturkey.png",
+    handle: "DurkeyTurkey_",
+    photo: "/cast/durkeyturkey.jpg",
     episodeId: "OAgMA4svtBo",
     episodeTitle: "Meme Coins, ThorChain, PulseChain & Chaos",
   },
