@@ -47,7 +47,7 @@ export default function RootLayout({
           referrerPolicy="no-referrer"
         />
       </head>
-      <body className="min-h-full flex flex-col bg-[#0a0612] text-white">
+      <body className="min-h-full flex flex-col bg-[#0a0e1a] text-white">
         <Web3Providers>
           <Navbar />
           <main className="flex-1 pt-[72px]">{children}</main>

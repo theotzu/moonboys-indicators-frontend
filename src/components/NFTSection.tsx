@@ -35,12 +35,12 @@ export function NFTSection() {
   return (
     <section
       id="nft"
-      className="px-6 py-20 max-w-6xl mx-auto w-full border-t border-purple-500/10"
+      className="px-6 py-20 max-w-6xl mx-auto w-full border-t border-blue-500/10"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         {/* Art */}
-        <div className="relative aspect-square rounded-2xl overflow-hidden border border-purple-500/30 bg-[#15101f]">
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/15 via-transparent to-teal-500/15 z-10 pointer-events-none" />
+        <div className="relative aspect-square rounded-2xl overflow-hidden border border-blue-500/30 bg-[#0f1729]">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/15 via-transparent to-cyan-500/15 z-10 pointer-events-none" />
           <Image
             src={pickArt(tokenId)}
             alt={`${NFT.name} #${tokenId}`}
@@ -49,7 +49,7 @@ export function NFTSection() {
             className="object-cover z-0 image-pixelated"
             priority={false}
           />
-          <span className="absolute bottom-3 right-3 z-20 px-2 py-1 rounded-md bg-black/60 text-purple-200 text-xs font-mono backdrop-blur-sm">
+          <span className="absolute bottom-3 right-3 z-20 px-2 py-1 rounded-md bg-black/60 text-blue-200 text-xs font-mono backdrop-blur-sm">
             #{tokenId}
           </span>
         </div>
@@ -57,11 +57,11 @@ export function NFTSection() {
         {/* Copy */}
         <div className="flex flex-col gap-5">
           <div>
-            <p className="text-teal-300 text-xs font-bold uppercase tracking-widest mb-3">
+            <p className="text-cyan-300 text-xs font-bold uppercase tracking-widest mb-3">
               NFT Collection
             </p>
             <h2 className="text-3xl md:text-4xl font-bold mb-3">
-              <span className="bg-gradient-to-r from-purple-300 to-teal-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-300 to-cyan-300 bg-clip-text text-transparent">
                 {NFT.name}
               </span>
             </h2>
@@ -75,12 +75,12 @@ export function NFTSection() {
               href={NFT.marketplaceUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 rounded-lg bg-purple-500 text-white font-bold hover:bg-purple-400 transition-colors"
+              className="px-6 py-3 rounded-lg bg-blue-500 text-white font-bold hover:bg-blue-400 transition-colors"
             >
               View on OpenSea
             </a>
             {NFT.soldOut && (
-              <span className="px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-teal-400/50 text-teal-300 bg-teal-500/10">
+              <span className="px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-cyan-400/50 text-cyan-300 bg-cyan-500/10">
                 Sold Out
               </span>
             )}

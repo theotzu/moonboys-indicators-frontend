@@ -9,21 +9,21 @@ export default function HomePage() {
   return (
     <>
       {/* Ticker tape */}
-      <div className="border-b border-purple-500/20">
+      <div className="border-b border-blue-500/20">
         <TradingViewTicker />
       </div>
 
       {/* Hero */}
       <section className="relative flex flex-col items-center justify-center min-h-[50vh] text-center px-6 py-20 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-purple-500/15 blur-[120px]" />
-          <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-teal-500/10 blur-[120px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-blue-500/15 blur-[120px]" />
+          <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-cyan-500/10 blur-[120px]" />
         </div>
 
         <div className="relative z-10 max-w-3xl mx-auto">
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-none tracking-tight mb-6">
             Moon Boys{" "}
-            <span className="bg-gradient-to-r from-purple-300 to-teal-300 bg-clip-text text-transparent">Podcast</span>
+            <span className="bg-gradient-to-r from-blue-300 to-cyan-300 bg-clip-text text-transparent">Podcast</span>
           </h1>
           <p className="text-gray-300 text-lg md:text-xl max-w-xl mx-auto mb-4 leading-relaxed">
             Crypto trading talk and market analysis — live on Twitch and X.
@@ -36,13 +36,13 @@ export default function HomePage() {
               href="https://www.youtube.com/@MoonBoysPodcast"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-3 bg-purple-500 text-white font-bold rounded-lg hover:bg-purple-400 transition-colors"
+              className="px-8 py-3 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-400 transition-colors"
             >
               Watch the Podcast
             </a>
             <a
               href="#indicators"
-              className="px-8 py-3 border border-teal-400/60 text-teal-300 font-bold rounded-lg hover:bg-teal-500/10 transition-colors"
+              className="px-8 py-3 border border-cyan-400/60 text-cyan-300 font-bold rounded-lg hover:bg-cyan-500/10 transition-colors"
             >
               See Our Indicators
             </a>
@@ -53,10 +53,10 @@ export default function HomePage() {
       <LatestEpisode />
 
       {/* Indicators Section */}
-      <section id="indicators" className="px-6 py-16 max-w-6xl mx-auto w-full border-t border-purple-500/10">
+      <section id="indicators" className="px-6 py-16 max-w-6xl mx-auto w-full border-t border-blue-500/10">
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-bold mb-3">
-            Our <span className="text-teal-300">Indicators</span>
+            Our <span className="text-cyan-300">Indicators</span>
           </h2>
           <p className="text-gray-400 text-sm max-w-xl mx-auto">
             Open-source Pine Script™ tools published on TradingView — free for everyone.
@@ -73,7 +73,7 @@ export default function HomePage() {
       <NFTSection />
 
       {/* Footer */}
-      <footer className="border-t border-purple-500/20 px-6 py-10 mt-12">
+      <footer className="border-t border-blue-500/20 px-6 py-10 mt-12">
         <div className="max-w-6xl mx-auto flex flex-col items-center gap-6">
           <div className="flex flex-wrap justify-center gap-2">
             {SOCIAL_LINKS.map((s) => (
@@ -83,7 +83,7 @@ export default function HomePage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={s.label}
-                className="flex items-center justify-center w-10 h-10 rounded-full text-gray-400 hover:text-purple-300 hover:bg-purple-500/10 transition-colors text-base"
+                className="flex items-center justify-center w-10 h-10 rounded-full text-gray-400 hover:text-blue-300 hover:bg-blue-500/10 transition-colors text-base"
               >
                 <i className={s.icon} aria-hidden="true"></i>
               </a>

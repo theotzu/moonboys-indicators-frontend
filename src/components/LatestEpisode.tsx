@@ -53,10 +53,10 @@ export async function LatestEpisode() {
   return (
     <section
       id="podcast"
-      className="px-6 py-16 max-w-5xl mx-auto w-full text-center border-t border-purple-500/10"
+      className="px-6 py-16 max-w-5xl mx-auto w-full text-center border-t border-blue-500/10"
     >
       <div className="mb-6">
-        <p className="text-teal-300 text-xs font-bold uppercase tracking-widest mb-2">
+        <p className="text-cyan-300 text-xs font-bold uppercase tracking-widest mb-2">
           Latest Episode
         </p>
         <h2 className="text-2xl md:text-3xl font-bold text-white max-w-3xl mx-auto leading-tight">
@@ -64,7 +64,7 @@ export async function LatestEpisode() {
         </h2>
       </div>
 
-      <div className="relative aspect-video w-full rounded-xl overflow-hidden border border-purple-500/30 bg-[#15101f] shadow-lg shadow-purple-500/10">
+      <div className="relative aspect-video w-full rounded-xl overflow-hidden border border-blue-500/30 bg-[#0f1729] shadow-lg shadow-blue-500/10">
         <iframe
           src={`https://www.youtube.com/embed/${ep.id}?rel=0`}
           title={ep.title}
@@ -79,7 +79,7 @@ export async function LatestEpisode() {
           href="https://www.youtube.com/@MoonBoysPodcast/streams"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-purple-300 hover:text-purple-200 text-sm font-semibold"
+          className="inline-flex items-center gap-2 text-blue-300 hover:text-blue-200 text-sm font-semibold"
         >
           Watch all episodes on YouTube →
         </a>

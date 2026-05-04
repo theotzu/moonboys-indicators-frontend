@@ -16,13 +16,13 @@ function PersonAvatar({ p, size = "lg" }: { p: Person; size?: "sm" | "lg" }) {
   const sizes = size === "lg" ? "80px" : "56px";
   return (
     <div
-      className={`relative ${dim} rounded-full overflow-hidden bg-gradient-to-br from-purple-500/30 to-teal-500/30 border border-purple-500/30 flex items-center justify-center shrink-0`}
+      className={`relative ${dim} rounded-full overflow-hidden bg-gradient-to-br from-blue-500/30 to-cyan-500/30 border border-blue-500/30 flex items-center justify-center shrink-0`}
     >
       {p.photo ? (
         <Image src={p.photo} alt={p.name} fill className="object-cover" sizes={sizes} />
       ) : (
         <span
-          className={`${text} font-bold bg-gradient-to-br from-purple-200 to-teal-200 bg-clip-text text-transparent`}
+          className={`${text} font-bold bg-gradient-to-br from-blue-200 to-cyan-200 bg-clip-text text-transparent`}
         >
           {initials(p.name)}
         </span>
@@ -50,13 +50,13 @@ function HostCard({ p }: { p: Person }) {
       {...(href
         ? { href, target: "_blank" as const, rel: "noopener noreferrer" }
         : {})}
-      className="group flex flex-col items-center text-center gap-3 p-4 rounded-xl border border-purple-500/20 bg-[#15101f]/60 hover:border-purple-400/50 hover:bg-purple-500/5 transition-colors"
+      className="group flex flex-col items-center text-center gap-3 p-4 rounded-xl border border-blue-500/20 bg-[#0f1729]/60 hover:border-blue-400/50 hover:bg-blue-500/5 transition-colors"
     >
       <PersonAvatar p={p} size="lg" />
       <div>
         <p className="font-semibold text-white text-sm">{p.name}</p>
         {subtitle && (
-          <p className="text-purple-300/80 text-xs mt-0.5 group-hover:text-purple-300">
+          <p className="text-blue-300/80 text-xs mt-0.5 group-hover:text-blue-300">
             {subtitle}
           </p>
         )}
@@ -69,9 +69,9 @@ function GuestCard({ p }: { p: Person }) {
   const href = profileHref(p);
   const subtitle = subtitleFor(p);
   return (
-    <article className="flex flex-col rounded-xl border border-purple-500/25 bg-[#15101f]/60 overflow-hidden">
+    <article className="flex flex-col rounded-xl border border-blue-500/25 bg-[#0f1729]/60 overflow-hidden">
       {p.episodeId ? (
-        <div className="relative aspect-video w-full bg-[#15101f]">
+        <div className="relative aspect-video w-full bg-[#0f1729]">
           <iframe
             src={`https://www.youtube.com/embed/${p.episodeId}?rel=0`}
             title={`${p.name} on Moon Boys Podcast`}
@@ -82,7 +82,7 @@ function GuestCard({ p }: { p: Person }) {
           />
         </div>
       ) : (
-        <div className="relative aspect-video w-full bg-[#15101f] flex flex-col items-center justify-center gap-2 text-purple-300/40">
+        <div className="relative aspect-video w-full bg-[#0f1729] flex flex-col items-center justify-center gap-2 text-blue-300/40">
           <span className="text-4xl">🎙</span>
           <span className="text-xs uppercase tracking-widest">Episode coming soon</span>
         </div>
@@ -97,12 +97,12 @@ function GuestCard({ p }: { p: Person }) {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-purple-300/80 text-xs hover:text-purple-300 truncate block"
+                className="text-blue-300/80 text-xs hover:text-blue-300 truncate block"
               >
                 {subtitle}
               </a>
             ) : (
-              <p className="text-purple-300/80 text-xs truncate">{subtitle}</p>
+              <p className="text-blue-300/80 text-xs truncate">{subtitle}</p>
             ))}
           {p.episodeTitle && (
             <p className="text-gray-500 text-xs mt-0.5 truncate">{p.episodeTitle}</p>
@@ -117,11 +117,11 @@ export function HostsSection() {
   return (
     <section
       id="hosts"
-      className="px-6 py-16 max-w-6xl mx-auto w-full border-t border-purple-500/10"
+      className="px-6 py-16 max-w-6xl mx-auto w-full border-t border-blue-500/10"
     >
       <div className="text-center mb-10">
         <h2 className="text-3xl md:text-4xl font-bold mb-3">
-          The <span className="text-purple-300">Hosts</span>
+          The <span className="text-blue-300">Hosts</span>
         </h2>
         <p className="text-gray-400 text-sm max-w-xl mx-auto">
           The voices behind Moon Boys.
@@ -140,11 +140,11 @@ export function GuestsSection() {
   return (
     <section
       id="guests"
-      className="px-6 py-16 max-w-6xl mx-auto w-full border-t border-purple-500/10"
+      className="px-6 py-16 max-w-6xl mx-auto w-full border-t border-blue-500/10"
     >
       <div className="text-center mb-10">
         <h2 className="text-3xl md:text-4xl font-bold mb-3">
-          Notable <span className="text-teal-300">Guests</span>
+          Notable <span className="text-cyan-300">Guests</span>
         </h2>
         <p className="text-gray-400 text-sm max-w-xl mx-auto">
           Friends and traders who&apos;ve come on the show — watch their episodes below.
