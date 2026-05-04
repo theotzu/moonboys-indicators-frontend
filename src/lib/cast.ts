@@ -31,7 +31,8 @@ export const GUESTS: Person[] = [
     name: "Pwnsauce",
     handle: "STAKINGSEUSS",
     photo: "/cast/pwnsauce.jpg",
-    // TODO: episodeId for the Pwnsauce appearance
+    episodeId: "LdKJyUc98mg",
+    episodeTitle: "Is This the Amazon of Crypto? Bitcoin ETF Flows, ThorChain Deep Dive & Altcoin Survival",
   },
   {
     name: "DurkeyTurkey",
