@@ -1,11 +1,15 @@
-// Server component — fetches the Moon Boys YouTube RSS feed and embeds the
-// most recent non-Shorts episode. Revalidates hourly so the page stays fresh
-// without a redeploy. Falls back to a hardcoded video if the fetch fails.
+// Server component — fetches the most recent long-form Moon Boys episode by
+// scraping the channel's /videos tab (which naturally excludes Shorts — those
+// live on /shorts). Title resolved via YouTube oEmbed. Revalidates hourly.
+//
+// Why not RSS? youtube.com/feeds/videos.xml is currently 404'ing for this
+// channel — known YouTube quirk, not in our control. Scraping /videos is the
+// reliable workaround.
 
-const CHANNEL_ID = "UCUC6FnxuxRncfBNmYwJx5Eg";
+const CHANNEL_HANDLE = "MoonBoysPodcast";
 const FALLBACK = {
-  id: "d_AJeG_iI8Y",
-  title: "Latest Moon Boys episode",
+  id: "bEh5uyno4v4",
+  title: "Major Market CRASH incoming | Moon Boys Alert!",
 };
 
 interface Episode {
@@ -13,35 +17,25 @@ interface Episode {
   title: string;
 }
 
-function decodeEntities(s: string) {
-  return s
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(parseInt(n, 10)));
-}
-
 async function getLatestEpisode(): Promise<Episode> {
   try {
     const res = await fetch(
-      `https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`,
+      `https://www.youtube.com/@${CHANNEL_HANDLE}/videos`,
       { next: { revalidate: 3600 } },
     );
     if (!res.ok) return FALLBACK;
-    const xml = await res.text();
-    const entries = xml.matchAll(/<entry>([\s\S]+?)<\/entry>/g);
-    for (const match of entries) {
-      const block = match[1];
-      const titleMatch = block.match(/<title>([^<]+)<\/title>/);
-      const idMatch = block.match(/<yt:videoId>([^<]+)<\/yt:videoId>/);
-      if (!titleMatch || !idMatch) continue;
-      const title = decodeEntities(titleMatch[1]);
-      if (/#shorts/i.test(title)) continue;
-      return { id: idMatch[1], title };
-    }
-    return FALLBACK;
+    const html = await res.text();
+    const idMatch = html.match(/"videoId":"([a-zA-Z0-9_-]{11})"/);
+    if (!idMatch) return FALLBACK;
+    const id = idMatch[1];
+
+    const titleRes = await fetch(
+      `https://www.youtube.com/oembed?url=https://youtu.be/${id}&format=json`,
+      { next: { revalidate: 3600 } },
+    );
+    if (!titleRes.ok) return { id, title: FALLBACK.title };
+    const titleData = (await titleRes.json()) as { title?: string };
+    return { id, title: titleData.title ?? FALLBACK.title };
   } catch {
     return FALLBACK;
   }
