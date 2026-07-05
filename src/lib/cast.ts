@@ -17,6 +17,7 @@ export const HOSTS: Person[] = [
   { name: "Rom Reactor",    handle: "vickzinbk",    photo: "/cast/rom-reactor.jpg" },
   { name: "Theo Tzu",       handle: "theotzu_",     photo: "/cast/theo-tzu.jpg" },
   { name: "Imagine Aksel",  handle: "imagineaksel", photo: "/cast/imagine-aksel.jpg" },
+  { name: "Bad Religion",   handle: "punktaveira",  photo: "/cast/bad-religion.png" },
 ];
 
 export const GUESTS: Person[] = [
@@ -40,5 +41,12 @@ export const GUESTS: Person[] = [
     photo: "/cast/durkeyturkey.jpg",
     episodeId: "OAgMA4svtBo",
     episodeTitle: "Meme Coins, ThorChain, PulseChain & Chaos",
+  },
+  {
+    name: "FreeAdviceGuy",
+    handle: "FreeAdviceGuy",
+    photo: "/cast/freeadviceguy.jpg",
+    episodeId: "WE_Shqt9M9k",
+    episodeTitle: "Cash, Gold, Bitcoin or ETFs? Free Advice Guy Breaks It Down",
   },
 ];

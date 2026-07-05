@@ -127,7 +127,7 @@ export function HostsSection() {
           The voices behind Moon Boys.
         </p>
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
         {HOSTS.map((h) => (
           <HostCard key={h.name} p={h} />
         ))}
