@@ -7,6 +7,9 @@ export interface SocialLink {
 export const SOCIAL_LINKS: SocialLink[] = [
   { label: "YouTube",    href: "https://www.youtube.com/@MoonBoysPodcast",      icon: "fab fa-youtube" },
   { label: "Twitch",     href: "https://www.twitch.tv/moonboyspodcast",         icon: "fab fa-twitch" },
+  // Kick has no Font Awesome Free brand icon (fa-kickstarter is a different
+  // company), so this uses a generic broadcast glyph — same approach as Linktree.
+  { label: "Kick",       href: "https://kick.com/moonboyspodcast",              icon: "fas fa-tower-broadcast" },
   { label: "Discord",    href: "https://discord.com/invite/8qf3PTuzYw",         icon: "fab fa-discord" },
   { label: "X",          href: "https://x.com/moonboyspodcast",                 icon: "fab fa-x-twitter" },
   { label: "Instagram",  href: "https://www.instagram.com/moonboyspodcast",     icon: "fab fa-instagram" },
