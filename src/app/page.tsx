@@ -85,7 +85,22 @@ export default function HomePage() {
                 aria-label={s.label}
                 className="flex items-center justify-center w-10 h-10 rounded-full text-gray-400 hover:text-blue-300 hover:bg-blue-500/10 transition-colors text-base"
               >
-                <i className={s.icon} aria-hidden="true"></i>
+                {s.svgPath ? (
+                  // Sized below 1em: a full-bleed 24x24 brand mark reads heavier
+                  // than a Font Awesome glyph at the same box, so 14px matches
+                  // the optical weight of its neighbours.
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    width="14"
+                    height="14"
+                    aria-hidden="true"
+                  >
+                    <path d={s.svgPath} />
+                  </svg>
+                ) : (
+                  <i className={s.icon} aria-hidden="true"></i>
+                )}
               </a>
             ))}
           </div>
