@@ -1,45 +1,8 @@
-// Server component — fetches the most recent long-form Moon Boys episode by
-// scraping the channel's /videos tab (which naturally excludes Shorts — those
-// live on /shorts). Title resolved via YouTube oEmbed. Revalidates hourly.
-//
-// Why not RSS? youtube.com/feeds/videos.xml is currently 404'ing for this
-// channel — known YouTube quirk, not in our control. Scraping /videos is the
-// reliable workaround.
+// Server component — renders the most recent Moon Boys episode, livestreams
+// included. All the resolution logic (and the reasoning behind it) lives in
+// src/lib/latestEpisode.ts.
 
-const CHANNEL_HANDLE = "MoonBoysPodcast";
-const FALLBACK = {
-  id: "bEh5uyno4v4",
-  title: "Major Market CRASH incoming | Moon Boys Alert!",
-};
-
-interface Episode {
-  id: string;
-  title: string;
-}
-
-async function getLatestEpisode(): Promise<Episode> {
-  try {
-    const res = await fetch(
-      `https://www.youtube.com/@${CHANNEL_HANDLE}/videos`,
-      { next: { revalidate: 3600 } },
-    );
-    if (!res.ok) return FALLBACK;
-    const html = await res.text();
-    const idMatch = html.match(/"videoId":"([a-zA-Z0-9_-]{11})"/);
-    if (!idMatch) return FALLBACK;
-    const id = idMatch[1];
-
-    const titleRes = await fetch(
-      `https://www.youtube.com/oembed?url=https://youtu.be/${id}&format=json`,
-      { next: { revalidate: 3600 } },
-    );
-    if (!titleRes.ok) return { id, title: FALLBACK.title };
-    const titleData = (await titleRes.json()) as { title?: string };
-    return { id, title: titleData.title ?? FALLBACK.title };
-  } catch {
-    return FALLBACK;
-  }
-}
+import { getLatestEpisode } from "@/lib/latestEpisode";
 
 export async function LatestEpisode() {
   const ep = await getLatestEpisode();
@@ -47,6 +10,8 @@ export async function LatestEpisode() {
   return (
     <section
       id="podcast"
+      data-episode-id={ep.id}
+      data-episode-source={ep.source}
       className="px-6 py-16 max-w-5xl mx-auto w-full text-center border-t border-blue-500/10"
     >
       <div className="mb-6">
@@ -57,6 +22,25 @@ export async function LatestEpisode() {
           {ep.title}
         </h2>
       </div>
+
+      {ep.stale && (
+        <p
+          role="status"
+          className="mb-6 mx-auto max-w-xl rounded-lg border border-amber-400/40 bg-amber-400/10 px-4 py-3 text-sm text-amber-200"
+        >
+          We couldn&apos;t reach YouTube just now, so this is the last episode we
+          have on file.{" "}
+          <a
+            href="https://www.youtube.com/@MoonBoysPodcast/streams"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 font-semibold hover:text-amber-100"
+          >
+            See the newest on YouTube
+          </a>
+          .
+        </p>
+      )}
 
       <div className="relative aspect-video w-full rounded-xl overflow-hidden border border-blue-500/30 bg-[#0f1729] shadow-lg shadow-blue-500/10">
         <iframe
