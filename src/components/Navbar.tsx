@@ -26,6 +26,11 @@ export function Navbar() {
         own name — and this site is the podcast's name before it is anything
         else. The visible thing is the moon; the readable thing is still there.
 
+        Sized a notch up from the wordmark it replaced (40/44px against the
+        bar's 16px padding, so the header stays inside the pt-20 the pages
+        reserve for it). The roundel carries MOON BOYS in it, and at 36px that
+        lettering was texture rather than type.
+
         priority: it is in the fixed header at the top of every route, so it is
         always in the first viewport and there is nothing for lazy loading to
         defer past.
@@ -37,7 +42,7 @@ export function Navbar() {
           width={256}
           height={256}
           priority
-          className="h-9 w-9 sm:h-10 sm:w-10 rounded-full"
+          className="h-10 w-10 sm:h-11 sm:w-11 rounded-full"
         />
         <span className="sr-only">Moon Boys Podcast</span>
       </Link>
