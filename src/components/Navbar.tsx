@@ -4,7 +4,10 @@ import Link from "next/link";
 
 const NAV_LINKS = [
   { label: "Episodes",   href: "/#guests" },
-  { label: "Indicators", href: "/#indicators" },
+  // Follows the section, which widened from "Our Indicators" to "Free Tools"
+  // when the stream countdown was added. It lands at the top of that section,
+  // where Indicators is still the first thing in it.
+  { label: "Free Tools", href: "/#free-tools" },
   { label: "Hosts",      href: "/#hosts" },
   { label: "NFT",        href: "/#nft" },
 ];

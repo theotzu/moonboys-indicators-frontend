@@ -1,5 +1,6 @@
 import { TradingViewTicker } from "@/components/TradingViewWidget";
 import { IndicatorChart } from "@/components/IndicatorChart";
+import { StreamerTools } from "@/components/StreamerTools";
 import { HostsSection, GuestsSection } from "@/components/CastSection";
 import { NFTSection } from "@/components/NFTSection";
 import { LatestEpisode } from "@/components/LatestEpisode";
@@ -29,7 +30,7 @@ export default function HomePage() {
             Crypto trading talk and market analysis — live on Twitch and X.
           </p>
           <p className="text-gray-500 text-base max-w-xl mx-auto mb-10 leading-relaxed">
-            Plus open-source indicators we built and ship for free on TradingView.
+            Plus open-source TradingView indicators and streaming tools we built — all free.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -41,10 +42,10 @@ export default function HomePage() {
               Watch the Podcast
             </a>
             <a
-              href="#indicators"
+              href="#free-tools"
               className="px-8 py-3 border border-cyan-400/60 text-cyan-300 font-bold rounded-lg hover:bg-cyan-500/10 transition-colors"
             >
-              See Our Indicators
+              See the Free Tools
             </a>
           </div>
         </div>
@@ -52,18 +53,47 @@ export default function HomePage() {
 
       <LatestEpisode />
 
-      {/* Indicators Section */}
-      <section id="indicators" className="px-6 py-16 max-w-6xl mx-auto w-full border-t border-blue-500/10">
+      {/*
+        FREE TOOLS — was "Our Indicators". Theo, 2026-09-05, wanting to give the
+        stream countdown away here: "i know its not an indicator, well it kinda
+        is. but its like stuff for streamers. maybe that whole section could be
+        like 'Free stuff'."
+
+        So the section widened rather than a second one being bolted on, and the
+        indicators became a GROUP inside it instead of the whole thing. That
+        keeps one place on the site for "things the show gives away" and leaves
+        room for the next one without another rename.
+
+        ⚠️ THE INDICATORS STAY FIRST AND STAY NAMED. They are what this site
+        ranks for — the page title is "Free Crypto Trading Indicators" — so the
+        heading widening must not bury them. #indicators still resolves, for any
+        link that already points at it.
+      */}
+      <section id="free-tools" className="px-6 py-16 max-w-6xl mx-auto w-full border-t border-blue-500/10">
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-bold mb-3">
-            Our <span className="text-cyan-300">Indicators</span>
+            Free <span className="text-cyan-300">Tools</span>
           </h2>
           <p className="text-gray-400 text-sm max-w-xl mx-auto">
-            Open-source Pine Script™ tools published on TradingView — free for everyone.
+            Everything we build, given away — no signup, no paywall, no affiliate links.
           </p>
         </div>
 
-        <IndicatorChart />
+        <div id="indicators" className="scroll-mt-24">
+          <h3 className="text-xl font-bold mb-1">Indicators</h3>
+          <p className="text-gray-500 text-xs mb-5">
+            Open-source Pine Script™ tools published on TradingView.
+          </p>
+          <IndicatorChart />
+        </div>
+
+        <div id="streamer-tools" className="mt-14 scroll-mt-24">
+          <h3 className="text-xl font-bold mb-1">For streamers</h3>
+          <p className="text-gray-500 text-xs mb-5">
+            Overlays and odds and ends from running the show — take them.
+          </p>
+          <StreamerTools />
+        </div>
       </section>
 
       <HostsSection />
