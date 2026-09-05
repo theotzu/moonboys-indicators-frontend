@@ -1,50 +1,49 @@
 #!/usr/bin/env python3
-r"""Cut the MOON BOYS roundel out of the logo file for the navbar.
+r"""Resize the pre-cut MOON BOYS roundel for the navbar.
 
-Theo, 2026-09-05: "it says moonboys podcast in the top left corner. can we just
-put the logo up there" — then, on the first attempt (the MBP moon that sits in
-Logo/): "ew no i dont like that moonboys logo. how about this one", pointing at
-ChatGPT Image Jul 12, 2026, 12_30_16 PM.png.
+Theo, 2026-09-05, third pick: "lets try this instead" — the "copy" of the
+Jul 12 file. Two before it: the MBP moon in Logo/ ("ew no i dont like that
+moonboys logo") and the uncut Jul 12 square.
 
-⚠️ THE SOURCE IS A SQUARE PNG WITH A BLACK STARFIELD AROUND THE ROUNDEL, NOT A
-LOGO ON TRANSPARENCY. That black is #000; the navbar is #0a0e1a. Dropped in
-square, the corners are a slightly different black from the bar behind them and
-the mark reads as a pasted-on tile. So the roundel gets cut out and everything
-outside it becomes transparent.
+WHY THERE IS NO CIRCLE MASK IN HERE ANY MORE. The two earlier sources were
+flattened squares — one on a grey gradient, one on a black starfield — and both
+needed the disc measured and cut out or they would have read as a tile pasted
+onto the bar. This file arrives already cut: mode RGBA, corners at alpha 0,
+67% of the frame opaque. Measuring and re-cutting it could only clip the soft
+outline fragments the artwork carries outside the ring, so the alpha that is
+already in the file is used exactly as it is.
 
-The circle was measured, not guessed. Scanning the centre row and centre column
-for anything above L=40 (the starfield is under it) puts the outer amber ring
-at x 22-1231 and y 24-1240 of a 1254x1254 frame: centre (626.5, 632), radius
-~606. The mask uses that circle, so the amber arc survives and the stars do not.
-
-Output is 256px — comfortably over 4x the largest size the navbar draws it at,
-so it stays sharp on any DPR.
+⚠️ PREMULTIPLIED RESAMPLE, NOT A PLAIN ONE. The transparent pixels in this file
+are WHITE with alpha 0. LANCZOS ignores alpha and averages RGB, so a plain
+resize drags that white into every edge pixel and hangs a pale halo around the
+ring — visible against #0a0e1a, and exactly the artifact the whole exercise is
+meant to avoid. Multiplying RGB by alpha before resampling and dividing it back
+out afterwards makes the transparent pixels contribute nothing.
 
     python scripts/make-navbar-mark.py   ->  public/moon-boys-mark.png
 """
-from PIL import Image, ImageDraw
+from PIL import Image
 import numpy as np
 
-SRC = r"Z:\! Accounts\moonboyspodcast\ChatGPT Image Jul 12, 2026, 12_30_16 PM.png"
-CX, CY, R = 626.5, 632.0, 606.0
+SRC = r"Z:\! Accounts\moonboyspodcast\ChatGPT Image Jul 12, 2026, 12_30_16 PM copy.png"
 OUT = 256
-SS = 8  # supersample the mask, then downsample — cheap, smooth rim
 
-src = Image.open(SRC).convert("RGB")
+src = Image.open(SRC).convert("RGBA")
+a = np.asarray(src, dtype=np.float64)
+rgb, alpha = a[..., :3], a[..., 3:] / 255.0
 
-# Crop to the roundel's bounding square first so it fills the output frame edge
-# to edge; padding here is padding the navbar pays for in height.
-box = (round(CX - R), round(CY - R), round(CX + R), round(CY + R))
-disc = src.crop(box).resize((OUT, OUT), Image.LANCZOS)
+pre = Image.fromarray(np.concatenate([rgb * alpha, alpha * 255], axis=2).astype(np.uint8), "RGBA")
+small = np.asarray(pre.resize((OUT, OUT), Image.LANCZOS), dtype=np.float64)
 
-m = Image.new("L", (OUT * SS, OUT * SS), 0)
-ImageDraw.Draw(m).ellipse([0, 0, OUT * SS - 1, OUT * SS - 1], fill=255)
-mask = m.resize((OUT, OUT), Image.LANCZOS)
-
-out = disc.convert("RGBA")
-out.putalpha(mask)
+al = small[..., 3:] / 255.0
+# Where nothing is left, keep the colour channels at zero rather than dividing
+# by it — the pixel is invisible either way, and NaNs are not.
+un = np.divide(small[..., :3], al, out=np.zeros_like(small[..., :3]), where=al > 0)
+out = Image.fromarray(
+    np.concatenate([np.clip(un, 0, 255), al * 255], axis=2).astype(np.uint8), "RGBA"
+)
 out.save("public/moon-boys-mark.png", "PNG", optimize=True)
 
-a = np.asarray(out)
+o = np.asarray(out)
 print("public/moon-boys-mark.png %dx%d  opaque %.1f%%  corner alpha %d"
-      % (OUT, OUT, (a[..., 3] > 250).mean() * 100, a[0, 0, 3]))
+      % (OUT, OUT, (o[..., 3] > 250).mean() * 100, o[0, 0, 3]))
