@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 
 const NAV_LINKS = [
@@ -15,10 +16,30 @@ const NAV_LINKS = [
 export function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-6 py-4 bg-[#0a0e1a]/85 backdrop-blur-sm border-b border-blue-500/20">
+      {/*
+        THE MARK, NOT THE WORDS. Theo, 2026-09-05: "it says moonboys podcast in
+        the top left corner. can we just put the logo up there."
+
+        The name stays in the DOM as sr-only text rather than being deleted. A
+        navbar whose only home link is an image gives a screen reader whatever
+        the alt text says and gives search engines nothing at all for the site's
+        own name — and this site is the podcast's name before it is anything
+        else. The visible thing is the moon; the readable thing is still there.
+
+        priority: it is in the fixed header at the top of every route, so it is
+        always in the first viewport and there is nothing for lazy loading to
+        defer past.
+      */}
       <Link href="/" className="flex items-center shrink-0">
-        <span className="text-blue-300 font-bold text-base sm:text-lg tracking-wide whitespace-nowrap">
-          Moon Boys Podcast
-        </span>
+        <Image
+          src="/moon-boys-mark.png"
+          alt=""
+          width={256}
+          height={256}
+          priority
+          className="h-9 w-9 sm:h-10 sm:w-10 rounded-full"
+        />
+        <span className="sr-only">Moon Boys Podcast</span>
       </Link>
 
       <div className="hidden sm:flex items-center gap-4 md:gap-6">

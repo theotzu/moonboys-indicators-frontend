@@ -60,7 +60,12 @@ export const INDICATORS = [
       "Heat-mapped futures liquidation zones from Binance & Bybit OI. Green = long liq zones, purple = short liq zones. ⚡ marks the highest-significance levels to watch.",
     scriptUrl: "https://www.tradingview.com/script/L5TplYwb-Moon-Boys-BTC-Liquidation-Heatmap/",
     author: "VickzinBK",
-    tags: ["Liquidations", "Futures OI", "BTC Only"],
+    // "BTC Only" came off here too, 2026-09-05 — Theo: "i dont think that is
+    // just for btc only anymore either." Same distinction as the production
+    // cost card above: the LABEL still says BTC because that is what the script
+    // is called and what it is tuned for; the tag was a claim about where it
+    // will run, and that is the part that stopped being true.
+    tags: ["Liquidations", "Futures OI"],
     image: "/indicators/liquidation-heatmap.png",
   },
 ];
