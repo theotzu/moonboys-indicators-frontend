@@ -7,7 +7,7 @@ const NAV_LINKS = [
   // Follows the section, which widened from "Our Indicators" to "Free Tools"
   // when the stream countdown was added. It lands at the top of that section,
   // where Indicators is still the first thing in it.
-  { label: "Free Tools", href: "/#free-tools" },
+  { label: "Free Stuff", href: "/free-stuff" },
   { label: "Hosts",      href: "/#hosts" },
   { label: "NFT",        href: "/#nft" },
 ];

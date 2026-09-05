@@ -1,6 +1,7 @@
 import { TradingViewTicker } from "@/components/TradingViewWidget";
-import { IndicatorChart } from "@/components/IndicatorChart";
-import { StreamerTools } from "@/components/StreamerTools";
+import Link from "next/link";
+import { INDICATORS } from "@/lib/indicators";
+import { TOOLS } from "@/components/StreamerTools";
 import { HostsSection, GuestsSection } from "@/components/CastSection";
 import { NFTSection } from "@/components/NFTSection";
 import { LatestEpisode } from "@/components/LatestEpisode";
@@ -42,10 +43,10 @@ export default function HomePage() {
               Watch the Podcast
             </a>
             <a
-              href="#free-tools"
+              href="#free-stuff"
               className="px-8 py-3 border border-cyan-400/60 text-cyan-300 font-bold rounded-lg hover:bg-cyan-500/10 transition-colors"
             >
-              See the Free Tools
+              See the Free Stuff
             </a>
           </div>
         </div>
@@ -54,45 +55,60 @@ export default function HomePage() {
       <LatestEpisode />
 
       {/*
-        FREE TOOLS — was "Our Indicators". Theo, 2026-09-05, wanting to give the
-        stream countdown away here: "i know its not an indicator, well it kinda
-        is. but its like stuff for streamers. maybe that whole section could be
-        like 'Free stuff'."
+        A TEASER, NOT THE SECTION. Theo, 2026-09-05: "maybe lets have a breakout
+        page called 'Free Stuff' that we can go into. instead of having all the
+        indicators on the front page."
 
-        So the section widened rather than a second one being bolted on, and the
-        indicators became a GROUP inside it instead of the whole thing. That
-        keeps one place on the site for "things the show gives away" and leaves
-        room for the next one without another rename.
+        The cards moved to /free-stuff. What stays here is every name, linked —
+        which is the point of keeping anything at all. This page is titled "Free
+        Crypto Trading Indicators", and the four cards were the only thing on it
+        backing that up; moving them wholesale would have left the claim with
+        nothing under it. Names and a link cost one screen instead of four and
+        keep the page about what it says it is.
 
-        ⚠️ THE INDICATORS STAY FIRST AND STAY NAMED. They are what this site
-        ranks for — the page title is "Free Crypto Trading Indicators" — so the
-        heading widening must not bury them. #indicators still resolves, for any
-        link that already points at it.
+        #indicators stays as an anchor here AND on /free-stuff, so an old link
+        lands somewhere sensible either way.
       */}
-      <section id="free-tools" className="px-6 py-16 max-w-6xl mx-auto w-full border-t border-blue-500/10">
-        <div className="text-center mb-10">
+      <section id="free-stuff" className="px-6 py-16 max-w-6xl mx-auto w-full border-t border-blue-500/10">
+        <div className="text-center mb-8">
           <h2 className="text-3xl md:text-4xl font-bold mb-3">
-            Free <span className="text-cyan-300">Tools</span>
+            Free <span className="text-cyan-300">Stuff</span>
           </h2>
           <p className="text-gray-400 text-sm max-w-xl mx-auto">
             Everything we build, given away — no signup, no paywall, no affiliate links.
           </p>
         </div>
 
-        <div id="indicators" className="scroll-mt-24">
-          <h3 className="text-xl font-bold mb-1">Indicators</h3>
-          <p className="text-gray-500 text-xs mb-5">
-            Open-source Pine Script™ tools published on TradingView.
-          </p>
-          <IndicatorChart />
+        <div id="indicators" className="grid grid-cols-1 sm:grid-cols-2 gap-3 scroll-mt-24">
+          {INDICATORS.map((ind) => (
+            <Link
+              key={ind.id}
+              href={`/free-stuff#indicators`}
+              className="flex items-center justify-between gap-3 rounded-lg border border-blue-500/20 bg-[#0f1729]/60 px-4 py-3 hover:border-blue-500/40 hover:bg-[#0f1729] transition-colors"
+            >
+              <span className="text-sm font-semibold text-white">{ind.label}</span>
+              <span className="text-xs text-gray-500 shrink-0">{ind.tags[0]}</span>
+            </Link>
+          ))}
+          {TOOLS.map((tool) => (
+            <Link
+              key={tool.id}
+              href="/free-stuff#streamer-widgets"
+              className="flex items-center justify-between gap-3 rounded-lg border border-cyan-500/25 bg-[#0f1729]/60 px-4 py-3 hover:border-cyan-500/50 hover:bg-[#0f1729] transition-colors"
+            >
+              <span className="text-sm font-semibold text-white">{tool.label}</span>
+              <span className="text-xs text-cyan-300/80 shrink-0">Streamer widget</span>
+            </Link>
+          ))}
         </div>
 
-        <div id="streamer-tools" className="mt-14 scroll-mt-24">
-          <h3 className="text-xl font-bold mb-1">For streamers</h3>
-          <p className="text-gray-500 text-xs mb-5">
-            Overlays and odds and ends from running the show — take them.
-          </p>
-          <StreamerTools />
+        <div className="mt-8 text-center">
+          <Link
+            href="/free-stuff"
+            className="inline-block px-8 py-3 border border-cyan-400/60 text-cyan-300 font-bold rounded-lg hover:bg-cyan-500/10 transition-colors"
+          >
+            See all the free stuff →
+          </Link>
         </div>
       </section>
 

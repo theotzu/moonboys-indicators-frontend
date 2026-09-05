@@ -1,60 +1,7 @@
 "use client";
 
 import Image from "next/image";
-
-/**
- * INDICATOR IMAGES
- * Drop screenshots into /public/indicators/ with these exact filenames:
- *   moon-boys-line.png
- *   dollarized-volume.png
- *   btc-production-cost.png
- *   liquidation-heatmap.png
- *
- * Recommended: screenshot the chart preview from each TradingView script page.
- * Ideal size: 800×450px (16:9). PNG or JPG both work.
- */
-const INDICATORS = [
-  {
-    id: "moon-boys-line",
-    label: "Moon Boys Line",
-    description:
-      "44 / 125 / 200-day SMAs with a colour-coded band. Gold = bullish, blue = risk-off, gray = neutral. Works on any asset — great for reading macro trend regime at a glance.",
-    scriptUrl: "https://www.tradingview.com/script/5xZSUQ3b-MoonBoys-Line/",
-    author: "theotzu",
-    tags: ["Trend", "SMA", "Any Asset"],
-    image: "/indicators/moon-boys-line.png",
-  },
-  {
-    id: "dollarized-volume",
-    label: "Dollarized Volume",
-    description:
-      "Volume × Price per candle — shows real capital flow regardless of the asset's price level. Compare participation fairly across time periods and spot institutional moves.",
-    scriptUrl: "https://www.tradingview.com/script/GKRGy2vD-Moon-Boys-Dollarized-Volume/",
-    author: "VickzinBK",
-    tags: ["Volume", "Capital Flow", "Any Asset"],
-    image: "/indicators/dollarized-volume.png",
-  },
-  {
-    id: "btc-production-cost",
-    label: "BTC Production Cost",
-    description:
-      "Bitcoin's real cost of production using CBECI electricity data across mining eras. Plots macro support zones where miners go underwater — historically reliable cycle lows.",
-    scriptUrl: "https://www.tradingview.com/script/kDOElEFI-Moon-Boys-BTC-Production-Cost-Daily/",
-    author: "VickzinBK",
-    tags: ["On-Chain", "Mining", "BTC Only"],
-    image: "/indicators/btc-production-cost.png",
-  },
-  {
-    id: "liquidation-heatmap",
-    label: "BTC Liquidation Heatmap",
-    description:
-      "Heat-mapped futures liquidation zones from Binance & Bybit OI. Green = long liq zones, purple = short liq zones. ⚡ marks the highest-significance levels to watch.",
-    scriptUrl: "https://www.tradingview.com/script/L5TplYwb-Moon-Boys-BTC-Liquidation-Heatmap/",
-    author: "VickzinBK",
-    tags: ["Liquidations", "Futures OI", "BTC Only"],
-    image: "/indicators/liquidation-heatmap.png",
-  },
-];
+import { INDICATORS } from "@/lib/indicators";
 
 export function IndicatorChart() {
   return (

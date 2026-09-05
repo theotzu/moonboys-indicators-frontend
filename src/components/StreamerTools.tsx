@@ -18,7 +18,7 @@ import Image from "next/image";
  * preview, same tag pills, same button at the bottom. Two groups that look
  * like two different websites would undo the point of putting them together.
  */
-const TOOLS = [
+export const TOOLS = [
   {
     id: "stream-countdown",
     label: "Stream Countdown",
@@ -37,11 +37,21 @@ const TOOLS = [
 
 export function StreamerTools() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    /*
+      Flex-wrap rather than the indicators' 2-column grid. Theo, 2026-09-05:
+      "lets centre it for now."
+
+      With one tool a grid leaves it hard against the left edge with an empty
+      cell beside it, which reads as a missing card rather than a deliberate
+      one. Wrapping and centring puts a lone card in the middle, and the width
+      is set to exactly one grid column — so the day a second tool lands the
+      row matches the indicators above it with nothing to change here.
+    */
+    <div className="flex flex-wrap justify-center gap-4">
       {TOOLS.map((tool) => (
         <div
           key={tool.id}
-          className="rounded-xl border border-blue-500/25 bg-[#0f1729]/60 overflow-hidden flex flex-col"
+          className="w-full sm:w-[calc(50%-0.5rem)] rounded-xl border border-blue-500/25 bg-[#0f1729]/60 overflow-hidden flex flex-col"
         >
           <div className="relative w-full aspect-video bg-[#0f1729] border-b border-blue-500/15">
             <Image
