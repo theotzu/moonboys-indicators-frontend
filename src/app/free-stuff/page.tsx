@@ -42,7 +42,7 @@ export default function FreeStuffPage() {
             Free <span className="text-cyan-300">Stuff</span>
           </h1>
           <p className="text-gray-400 text-sm max-w-xl mx-auto">
-            Everything we build, given away — no signup, no paywall, no affiliate links.
+            Everything we build, given away — no signup, no paywall.
           </p>
         </div>
 

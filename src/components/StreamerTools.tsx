@@ -86,28 +86,23 @@ export function StreamerTools() {
             </p>
 
             {/*
-              Two links, because the tool has two audiences: someone who wants
-              to look at it, and someone who wants to run it. The primary
-              button opens a configured example rather than the bare defaults.
+              💀 A second "Source" button linked the GitHub repo and is gone.
+              Theo, 2026-09-05: "remove the source from the countdown tho. dont
+              really want people finding my github."
+
+              ⚠️ This stops the site ADVERTISING it; it does not hide it. The
+              repo is still public and the tool is still served from a Vercel
+              URL that names it. Making it actually unfindable means making the
+              repo private, which is a GitHub setting, not a change here.
             */}
-            <div className="mt-auto flex flex-col sm:flex-row gap-2">
-              <a
-                href={tool.demoHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 py-2 px-4 rounded-lg text-sm font-semibold bg-blue-500/10 border border-blue-500/40 text-blue-300 hover:bg-blue-500/20 hover:text-blue-200 transition-colors"
-              >
-                Open the countdown →
-              </a>
-              <a
-                href="https://github.com/theotzu/stream-countdown"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 py-2 px-4 rounded-lg text-sm font-semibold border border-blue-500/25 text-gray-400 hover:text-gray-200 hover:border-blue-500/40 transition-colors"
-              >
-                Source
-              </a>
-            </div>
+            <a
+              href={tool.demoHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-auto flex items-center justify-center gap-2 py-2 px-4 rounded-lg text-sm font-semibold bg-blue-500/10 border border-blue-500/40 text-blue-300 hover:bg-blue-500/20 hover:text-blue-200 transition-colors"
+            >
+              Open the countdown →
+            </a>
           </div>
         </div>
       ))}
