@@ -14,28 +14,67 @@ import Image from "next/image";
  * overlays, spreadsheets, scripts — goes in this list rather than getting a
  * section of its own.
  *
+ * Theo, 2026-09-19: Position Desk joins as the first TRADING tool. It isn't a
+ * streamer widget and it isn't a TradingView script, so each entry now names
+ * its `group` and /free-stuff shows one heading per group. The button text and
+ * image alt were countdown-specific strings in the card; they are per-entry
+ * fields now.
+ *
  * Deliberately the same card shape as the indicators: same border, same 16:9
  * preview, same tag pills, same button at the bottom. Two groups that look
  * like two different websites would undo the point of putting them together.
  */
-export const TOOLS = [
+export type ToolGroup = "trading" | "streamer";
+
+export const TOOL_GROUPS: Record<ToolGroup, { title: string; anchor: string; tagline: string }> = {
+  trading: { title: "Trading tools", anchor: "trading-tools", tagline: "Trading tool" },
+  streamer: { title: "Streamer widgets", anchor: "streamer-widgets", tagline: "Streamer widget" },
+};
+
+export const TOOLS: {
+  id: string;
+  group: ToolGroup;
+  label: string;
+  description: string;
+  href: string;
+  cta: string;
+  author: string;
+  tags: string[];
+  image: string;
+  imageAlt: string;
+}[] = [
+  {
+    id: "position-desk",
+    group: "trading",
+    label: "Position Desk",
+    description:
+      "Track your spot and leverage trades in one place. Type in the coin, margin, leverage, entry and stop-loss, and it marks everything against live prices: total portfolio value, profit/loss, and where each leverage trade gets liquidated. No sign-up, no exchange login; your numbers stay in your browser.",
+    href: "https://position-desk.vercel.app/",
+    cta: "Open Position Desk →",
+    author: "theotzu",
+    tags: ["Spot", "Leverage", "Live Prices"],
+    image: "/tools/position-desk.jpg",
+    imageAlt: "Position Desk preview: total portfolio value above spot and leverage trade tables",
+  },
   {
     id: "stream-countdown",
+    group: "streamer",
     label: "Stream Countdown",
     description:
       "A “stream starting soon” overlay for OBS. Counts down to your start time in each viewer’s own timezone, plays a YouTube stream full-bleed behind it, and flips to a live state on its own when the clock runs out. Every setting is in the URL, so one link is one show — no install, no build, no account.",
-    href: "https://stream-countdown-alpha.vercel.app/",
     // The stream label and headline are the two things anyone will change
-    // first, so the demo link arrives with them already filled in.
-    demoHref:
+    // first, so the link arrives with them already filled in.
+    href:
       "https://stream-countdown-alpha.vercel.app/?show=Your%20Show&headline=Stream%20Starting%20Soon&t=20:00",
+    cta: "Open the countdown →",
     author: "theotzu",
     tags: ["For Streamers", "OBS", "Free"],
     image: "/tools/stream-countdown.jpg",
+    imageAlt: "Stream Countdown preview — a countdown clock over a full-screen background",
   },
 ];
 
-export function StreamerTools() {
+export function ToolCards({ group }: { group: ToolGroup }) {
   return (
     /*
       Flex-wrap rather than the indicators' 2-column grid. Theo, 2026-09-05:
@@ -48,7 +87,7 @@ export function StreamerTools() {
       row matches the indicators above it with nothing to change here.
     */
     <div className="flex flex-wrap justify-center gap-4">
-      {TOOLS.map((tool) => (
+      {TOOLS.filter((tool) => tool.group === group).map((tool) => (
         <div
           key={tool.id}
           className="w-full sm:w-[calc(50%-0.5rem)] rounded-xl border border-blue-500/25 bg-[#0f1729]/60 overflow-hidden flex flex-col"
@@ -56,7 +95,7 @@ export function StreamerTools() {
           <div className="relative w-full aspect-video bg-[#0f1729] border-b border-blue-500/15">
             <Image
               src={tool.image}
-              alt={`${tool.label} preview — a countdown clock over a full-screen background`}
+              alt={tool.imageAlt}
               fill
               sizes="(min-width: 640px) 50vw, 100vw"
               className="object-cover z-10"
@@ -96,12 +135,12 @@ export function StreamerTools() {
               repo private, which is a GitHub setting, not a change here.
             */}
             <a
-              href={tool.demoHref}
+              href={tool.href}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-auto flex items-center justify-center gap-2 py-2 px-4 rounded-lg text-sm font-semibold bg-blue-500/10 border border-blue-500/40 text-blue-300 hover:bg-blue-500/20 hover:text-blue-200 transition-colors"
             >
-              Open the countdown →
+              {tool.cta}
             </a>
           </div>
         </div>
