@@ -1,7 +1,8 @@
 import { TradingViewTicker } from "@/components/TradingViewWidget";
 import Link from "next/link";
+import Image from "next/image";
 import { INDICATORS } from "@/lib/indicators";
-import { TOOLS } from "@/components/StreamerTools";
+import { TOOLS, TOOL_GROUPS } from "@/components/ToolCards";
 import { HostsSection, GuestsSection } from "@/components/CastSection";
 import { NFTSection } from "@/components/NFTSection";
 import { LatestEpisode } from "@/components/LatestEpisode";
@@ -31,7 +32,7 @@ export default function HomePage() {
             Crypto trading talk and market analysis — live on Twitch and X.
           </p>
           <p className="text-gray-500 text-base max-w-xl mx-auto mb-10 leading-relaxed">
-            Plus open-source TradingView indicators and streaming tools we built — all free.
+            Plus TradingView indicators, trading tools and streaming widgets we built — all free.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -59,12 +60,12 @@ export default function HomePage() {
         page called 'Free Stuff' that we can go into. instead of having all the
         indicators on the front page."
 
-        The cards moved to /free-stuff. What stays here is every name, linked —
-        which is the point of keeping anything at all. This page is titled "Free
-        Crypto Trading Indicators", and the four cards were the only thing on it
-        backing that up; moving them wholesale would have left the claim with
-        nothing under it. Names and a link cost one screen instead of four and
-        keep the page about what it says it is.
+        The full cards moved to /free-stuff. What stays here is every item,
+        linked — which is the point of keeping anything at all. This page is
+        titled "Free Crypto Trading Indicators", and those cards were the only
+        thing on it backing that up; moving them wholesale would have left the
+        claim with nothing under it. (It started as bare name pills; see below
+        for why it is compact cards now.)
 
         #indicators stays as an anchor here AND on /free-stuff, so an old link
         lands somewhere sensible either way.
@@ -79,25 +80,58 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div id="indicators" className="grid grid-cols-1 sm:grid-cols-2 gap-3 scroll-mt-24">
-          {INDICATORS.map((ind) => (
+        {/*
+          CARDS, NOT PILLS. Theo, 2026-09-19: "im not liking the minimal free
+          stuff ... can we build those out a bit so they look more like they
+          used to? right now its too tiny banner version lol"
+
+          So every item gets its screenshot back, with its name, what kind of
+          thing it is, and two lines of its description. The full description
+          and the Add-to-chart / Open buttons still live on /free-stuff; each
+          card goes to its own group there. Six items make two rows of three.
+        */}
+        <div id="indicators" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 scroll-mt-24">
+          {[
+            ...INDICATORS.map((ind) => ({
+              id: ind.id,
+              label: ind.label,
+              description: ind.description,
+              image: ind.image,
+              kind: "TradingView indicator",
+              href: "/free-stuff#indicators",
+            })),
+            ...TOOLS.map((tool) => ({
+              id: tool.id,
+              label: tool.label,
+              description: tool.description,
+              image: tool.image,
+              kind: TOOL_GROUPS[tool.group].tagline,
+              href: `/free-stuff#${TOOL_GROUPS[tool.group].anchor}`,
+            })),
+          ].map((item) => (
             <Link
-              key={ind.id}
-              href={`/free-stuff#indicators`}
-              className="flex items-center justify-between gap-3 rounded-lg border border-blue-500/20 bg-[#0f1729]/60 px-4 py-3 hover:border-blue-500/40 hover:bg-[#0f1729] transition-colors"
+              key={item.id}
+              href={item.href}
+              className="group rounded-xl border border-blue-500/25 bg-[#0f1729]/60 overflow-hidden flex flex-col hover:border-cyan-400/50 hover:bg-[#0f1729] transition-colors"
             >
-              <span className="text-sm font-semibold text-white">{ind.label}</span>
-              <span className="text-xs text-gray-500 shrink-0">{ind.tags[0]}</span>
-            </Link>
-          ))}
-          {TOOLS.map((tool) => (
-            <Link
-              key={tool.id}
-              href="/free-stuff#streamer-widgets"
-              className="flex items-center justify-between gap-3 rounded-lg border border-cyan-500/25 bg-[#0f1729]/60 px-4 py-3 hover:border-cyan-500/50 hover:bg-[#0f1729] transition-colors"
-            >
-              <span className="text-sm font-semibold text-white">{tool.label}</span>
-              <span className="text-xs text-cyan-300/80 shrink-0">Streamer widget</span>
+              <div className="relative w-full aspect-video bg-[#0f1729] border-b border-blue-500/15 overflow-hidden">
+                <Image
+                  src={item.image}
+                  alt={`${item.label} preview`}
+                  fill
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                />
+              </div>
+              <div className="p-4 flex flex-col gap-1.5 flex-1">
+                <div className="flex items-baseline justify-between gap-2">
+                  <span className="font-semibold text-white text-sm">{item.label}</span>
+                  <span className="text-[11px] text-cyan-300/80 shrink-0">{item.kind}</span>
+                </div>
+                <p className="text-gray-400 text-xs leading-relaxed line-clamp-2">
+                  {item.description}
+                </p>
+              </div>
             </Link>
           ))}
         </div>

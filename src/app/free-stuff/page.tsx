@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { IndicatorChart } from "@/components/IndicatorChart";
-import { StreamerTools } from "@/components/StreamerTools";
+import { ToolCards } from "@/components/ToolCards";
 
 /**
  * /free-stuff — everything the show gives away, on its own page.
@@ -18,18 +18,18 @@ import { StreamerTools } from "@/components/StreamerTools";
 export const metadata: Metadata = {
   title: "Free Stuff | Moon Boys Podcast",
   description:
-    "Free open-source TradingView indicators and streaming widgets from the Moon Boys Podcast — trend regimes, mining cost floors, liquidation heatmaps, capital flow, and a stream countdown overlay for OBS. No signup, no paywall.",
+    "Free open-source TradingView indicators, trading tools and streaming widgets from the Moon Boys Podcast — trend regimes, mining cost floors, liquidation heatmaps, capital flow, a live spot and leverage position tracker, and a stream countdown overlay for OBS. No signup, no paywall.",
   alternates: { canonical: "/free-stuff" },
   openGraph: {
     title: "Free Stuff | Moon Boys Podcast",
     description:
-      "Free TradingView indicators and streaming widgets from the Moon Boys Podcast.",
+      "Free TradingView indicators, trading tools and streaming widgets from the Moon Boys Podcast.",
     url: "/free-stuff",
   },
   twitter: {
     title: "Free Stuff | Moon Boys Podcast",
     description:
-      "Free TradingView indicators and streaming widgets from the Moon Boys Podcast.",
+      "Free TradingView indicators, trading tools and streaming widgets from the Moon Boys Podcast.",
   },
 };
 
@@ -60,9 +60,17 @@ export default function FreeStuffPage() {
           <IndicatorChart />
         </div>
 
+        <div id="trading-tools" className="mt-16 scroll-mt-24">
+          <h2 className="text-2xl font-bold mb-1">Trading tools</h2>
+          <p className="text-gray-500 text-xs mb-5">
+            Web apps you open in your browser. Nothing to install.
+          </p>
+          <ToolCards group="trading" />
+        </div>
+
         <div id="streamer-widgets" className="mt-16 scroll-mt-24">
           <h2 className="text-2xl font-bold mb-5">Streamer widgets</h2>
-          <StreamerTools />
+          <ToolCards group="streamer" />
         </div>
 
         <div className="mt-16 text-center">
